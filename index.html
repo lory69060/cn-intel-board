@@ -16,12 +16,20 @@
   "url": "https://lory69060.github.io/cn-intel-board/",
   "about": ["半导体", "存储芯片", "固态电池", "低空经济", "创新药", "国产替代"],
   "dateModified": "2026-08-11",
-  "hasPart": {
-    "@type": "DataFeed",
-    "name": "Signal Board Structured Data",
-    "description": "33 high-confidence industry intelligence signals in machine-readable JSON format",
-    "url": "https://lory69060.github.io/cn-intel-board/signal-board-structured.json"
-  }
+  "hasPart": [
+    {
+      "@type": "DataFeed",
+      "name": "Signal Board Structured Data",
+      "description": "33 high-confidence industry intelligence signals in machine-readable JSON format",
+      "url": "https://lory69060.github.io/cn-intel-board/signal-board-structured.json"
+    },
+    {
+      "@type": "DataFeed",
+      "name": "2026 H1 Earnings Tracker",
+      "description": "Tracked companies' 2026 H1 earnings disclosures (forecasts and formal reports) in machine-readable JSON format",
+      "url": "https://lory69060.github.io/cn-intel-board/data/earnings-tracker-2026H1.json"
+    }
+  ]
 }
 </script>
 <style>
@@ -45,6 +53,7 @@ code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; }
 
 <h2>📡 结构化数据（机器可读）</h2>
 <p><a href="data/signal-board-structured.json">signal-board-structured.json</a> — 33 条高置信度产业信息差信号（行业 / 信号 / 强度 / 依据 / 日期）。供研究者、开发者和 AI Agent 直接调用。</p>
+<p><a href="data/earnings-tracker-2026H1.json">earnings-tracker-2026H1.json</a> — 2026 半年报跟踪（信号板覆盖公司的业绩预告与正式披露，akshare 实测）。中报季每日更新至 8 月 31 日。</p>
 
 <h2>📚 产业研究笔记</h2>
 <div id="articles"></div>

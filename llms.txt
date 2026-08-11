@@ -8,6 +8,9 @@ https://lory69060.github.io/cn-intel-board/
 # Structured signal board data (33 high-confidence industry intelligence signals)
 https://lory69060.github.io/cn-intel-board/signal-board-structured.json
 
+# 2026 H1 earnings tracker (public disclosures of tracked companies, machine-readable)
+https://lory69060.github.io/cn-intel-board/data/earnings-tracker-2026H1.json
+
 # Research articles with AI-accessible content
 
 # Industry analysis and policy insights

@@ -1,0 +1,211 @@
+{
+  "tracked_companies": [
+    {
+      "code": "300750",
+      "name": "宁德时代",
+      "industry": "储能/电池",
+      "disclosure": {
+        "status": "正式披露",
+        "report_period": "2026-06-30",
+        "revenue": "2769.17亿",
+        "revenue_yoy": "+54.80%",
+        "net_profit": "432.84亿",
+        "net_profit_yoy": "+41.98%",
+        "source": "akshare stock_financial_abstract_ths",
+        "announce_date": "2026-08-11前"
+      },
+      "status": "正式披露",
+      "report_period": "2026-06-30",
+      "revenue": "2769.17亿",
+      "revenue_yoy": "+54.80%",
+      "net_profit": "432.84亿",
+      "net_profit_yoy": "+41.98%",
+      "data_source": "akshare stock_financial_abstract_ths",
+      "announce_date": "2026-08-11前",
+      "verification_status": "验证",
+      "related_signals": [
+        {
+          "signal_id": 64,
+          "signal": "宁德战略投资峰飞航空（低空布局）"
+        }
+      ]
+    },
+    {
+      "code": "603986",
+      "name": "兆易创新",
+      "industry": "存储/半导体",
+      "disclosure": {
+        "status": "业绩预告",
+        "report_period": "2026-06-30",
+        "revenue": "约115亿",
+        "revenue_yoy": "+177%",
+        "net_profit": "约69亿",
+        "net_profit_yoy": "+1099%",
+        "source": "akshare stock_yjyg_em",
+        "announce_date": "2026-07-10"
+      },
+      "status": "业绩预告",
+      "report_period": "2026-06-30",
+      "revenue": "约115亿",
+      "revenue_yoy": "+177%",
+      "net_profit": "约69亿",
+      "net_profit_yoy": "+1099%",
+      "data_source": "akshare stock_yjyg_em",
+      "announce_date": "2026-07-10",
+      "verification_status": "验证",
+      "related_signals": [
+        {
+          "signal_id": 52,
+          "signal": "HBM差2-3代是卡脖子，DRAM快≠HBM快"
+        },
+        {
+          "signal_id": 84,
+          "signal": "刻蚀国产化率突破30%/薄膜20%"
+        }
+      ]
+    },
+    {
+      "code": "002466",
+      "name": "天齐锂业",
+      "industry": "固态电池上游",
+      "disclosure": {
+        "status": "业绩预告",
+        "report_period": "2026-06-30",
+        "net_profit": "28.5-42.5亿",
+        "net_profit_yoy": "+3276%-4935%",
+        "source": "akshare stock_yjyg_em",
+        "announce_date": "2026-07中旬前"
+      },
+      "status": "业绩预告",
+      "report_period": "2026-06-30",
+      "net_profit": "28.5-42.5亿",
+      "net_profit_yoy": "+3276%-4935%",
+      "data_source": "akshare stock_yjyg_em",
+      "announce_date": "2026-07中旬前",
+      "verification_status": "验证",
+      "related_signals": [
+        {
+          "signal_id": 87,
+          "signal": "硫化锂2027需求1000吨→2030万吨级，价格300万→50万"
+        },
+        {
+          "signal_id": 88,
+          "signal": "锂金属负极2027需求5000吨→2030 2万吨，国产率<20%"
+        }
+      ]
+    },
+    {
+      "code": "EH.US",
+      "name": "亿航智能",
+      "industry": "低空经济/eVTOL",
+      "disclosure": {
+        "status": "已披露Q1",
+        "report_period": "2026-Q1",
+        "delivery": "4架",
+        "delivery_yoy": "-63%",
+        "revenue": "0.26亿",
+        "revenue_yoy": "-1.7%",
+        "net_profit": "亏损1.26亿",
+        "source": "公司财报（akshare 无法覆盖美股）",
+        "announce_date": "2026-Q1"
+      },
+      "status": "已披露Q1",
+      "report_period": "2026-Q1",
+      "revenue": "0.26亿",
+      "revenue_yoy": "-1.7%",
+      "net_profit": "亏损1.26亿",
+      "data_source": "公司财报（akshare 无法覆盖美股）",
+      "announce_date": "2026-Q1",
+      "verification_status": "部分验证",
+      "related_signals": [
+        {
+          "signal_id": 76,
+          "signal": "亿航2024.11全球首次eVTOL固态电池飞行"
+        },
+        {
+          "signal_id": 80,
+          "signal": "阿联酋10亿美元采购350架E20（单价286万美元）"
+        }
+      ]
+    },
+    {
+      "code": "688521",
+      "name": "芯原股份",
+      "industry": "存储/半导体",
+      "disclosure": {
+        "status": "订单数据（非中报）",
+        "report_period": "2026-01至07",
+        "new_orders": "146.53亿",
+        "ai_share": ">90%",
+        "source": "公司公告/信号板",
+        "announce_date": "2026-08"
+      },
+      "status": "订单数据（非中报）",
+      "report_period": "2026-01至07",
+      "data_source": "公司公告/信号板",
+      "announce_date": "2026-08",
+      "verification_status": "验证",
+      "related_signals": [
+        {
+          "signal_id": 95,
+          "signal": "芯原Q3爆发+119%（内部信号）"
+        }
+      ]
+    },
+    {
+      "code": "301358",
+      "name": "湖南裕能",
+      "industry": "储能/电池",
+      "disclosure": {
+        "status": "待披露",
+        "report_period": "2026-06-30"
+      },
+      "status": "待披露",
+      "report_period": "2026-06-30",
+      "verification_status": "待验证"
+    },
+    {
+      "code": "300274",
+      "name": "阳光电源",
+      "industry": "储能/电池",
+      "disclosure": {
+        "status": "待披露",
+        "report_period": "2026-06-30"
+      },
+      "status": "待披露",
+      "report_period": "2026-06-30",
+      "verification_status": "待验证"
+    }
+  ],
+  "summary": {
+    "total_tracked": 7,
+    "disclosed_count": 5,
+    "pending_count": 2,
+    "by_industry": {
+      "储能/电池": {
+        "tracked": 3,
+        "disclosed": 1
+      },
+      "存储/半导体": {
+        "tracked": 2,
+        "disclosed": 2
+      },
+      "固态电池上游": {
+        "tracked": 1,
+        "disclosed": 1
+      },
+      "低空经济/eVTOL": {
+        "tracked": 1,
+        "disclosed": 1
+      }
+    }
+  },
+  "metadata": {
+    "source": "2026年中报跟踪体系（data/earnings/2026-half-year/）",
+    "data_basis": "akshare 实测：业绩预告 stock_yjyg_em / 正式披露 stock_financial_abstract_ths",
+    "generated_at": "2026-08-11T18:30:00+08:00",
+    "tracking_period": "2026-08-11 至 2026-08-31",
+    "disclaimer": "数据来源为上市公司公开披露（业绩预告/定期报告），仅供研究参考，不构成投资建议",
+    "version": "1.0"
+  }
+}
