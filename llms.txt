@@ -1,0 +1,41 @@
+# llms.txt - Machine-readable metadata for cn-intel-board
+# Site: China hard-tech supply chain intel from inside (中国硬科技供应链一手情报)
+# Purpose: Provide structured data and content for AI agents and researchers
+
+# Main site homepage with JSON-LD structured data
+https://lory69060.github.io/cn-intel-board/
+
+# Structured signal board data (33 high-confidence industry intelligence signals)
+https://lory69060.github.io/cn-intel-board/signal-board-structured.json
+
+# Research articles with AI-accessible content
+
+# Industry analysis and policy insights
+https://lory69060.github.io/cn-intel-board/articles/001-检测认证.md - New national standards creating market opportunities for certification industry
+https://lory69060.github.io/cn-intel-board/articles/002-AI信任恐惧转移.md - AI trust crisis: How complaints and compliance reshape educational hardware market
+https://lory69060.github.io/cn-intel-board/articles/005-君乐宝冷链翻车.md - Junlebao cold chain failure: Truth behind a milk cup's broken supply chain
+https://lory69060.github.io/cn-intel-board/articles/006-5万亿直播电商的隐形成本.md - 5 trillion livestream e-commerce: Hidden costs in 40-50% return rates
+https://lory69060.github.io/cn-intel-board/articles/006-君乐宝冷链续篇.md - Junlebao cold chain aftermath: Regulation and rectification after IPO roadblocks
+https://lory69060.github.io/cn-intel-board/articles/008-AI训练正在创造数字新贵族.md - AI training creating digital nobility: Industrial upgrade through technical progress
+https://lory69060.github.io/cn-intel-board/articles/009-苹果涨价3500元的真相-published.md - Apple's 3500 yuan price increase: Consumption upgrade in AI era
+https://lory69060.github.io/cn-intel-board/articles/010-智驾安全事故+902强监管.md - Autonomous driving 2026: Safety incidents + 902% increase, strong regulatory reshuffling
+https://lory69060.github.io/cn-intel-board/articles/015-game-ai-pricing-misalignment.md - Big tech cutting traditional studios, A-share game companies using AI for cost reduction - ignored pricing misalignment
+https://lory69060.github.io/cn-intel-board/articles/016-game-ai-h1-performance.md - A-share gaming sector H1 2026: Explosive growth in AI-driven performance reports
+https://lory69060.github.io/cn-intel-board/articles/022-雪球版-GLM-5.2国产算力全适配.md - GLM-5.2 launch: Full domestic computing power adaptation at 1/6 of GPT price
+https://lory69060.github.io/cn-intel-board/articles/031-国标一出手九成固态电池现原形-半固态还是全固态.md - National standard reveals 90% of "solid-state batteries" are actually semi-solid
+https://lory69060.github.io/cn-intel-board/articles/035-宝鼎科技两次自证没有AI还是5连板了.md - Baoding Technology: Two denials of AI connection still led to 5 consecutive limit-ups
+
+# Research notes (desensitized public editions)
+https://lory69060.github.io/cn-intel-board/articles/001-检测认证.md - July 1 new national standards: Certification industry players eating the "standard threshold" meal are pulling ahead
+https://lory69060.github.io/cn-intel-board/articles/003-冷链.md - Junlebao cold chain failure at 35°C: What a milk cup reveals about China's cold chain vulnerabilities
+https://lory69060.github.io/cn-intel-board/articles/010-存储芯片暴涨18倍.md - Memory chips as strategic resource: From cyclical commodity to AI-era infrastructure
+https://lory69060.github.io/cn-intel-board/articles/011-中国存储芯片破局的逆向思维.md - China memory chip breakthrough, contrarian view: Sanctions as an evolution pressure test
+https://lory69060.github.io/cn-intel-board/articles/027-长鑫科技首日成交1400亿，散户到底在赌什么.md - CXMT (ChangXin) debut: 140 billion yuan first-day turnover, what are retail investors really betting on
+https://lory69060.github.io/cn-intel-board/articles/028-AI科技股7月大调整，追光者为何站在山顶.md - AI tech stocks July correction: Why the light-chasers ended up stranded on the peak
+https://lory69060.github.io/cn-intel-board/articles/032-华峰测控市占率40%还是70%.md - Market share methodology: The "40% or 70%" data-caliber debate
+https://lory69060.github.io/cn-intel-board/articles/033-存储超级周期.md - Memory up 90%: Super-cycle feast or finale?
+
+# Methodology and analysis frameworks
+https://lory69060.github.io/cn-intel-board/articles/signal-deep-analysis-20260706.md - 2026-07-06 signal deep analysis: Investment logic under AI policy mainline
+https://lory69060.github.io/cn-intel-board/articles/xueqiu-engagement-playbook.md - Xueqiu community engagement guide: Data-driven content strategy
+https://lory69060.github.io/cn-intel-board/articles/xueqiu-pattern-analysis.md - Xueqiu popular article pattern analysis: Community content trends
