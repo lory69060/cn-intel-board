@@ -1,0 +1,54 @@
+{
+  "signals": [
+    {"id": 46, "industry": "存储/半导体", "signal": "长鑫2026Q1净利247.62亿/毛利65%/份额7.67%", "strength": "高", "basis": "数据在招股书深处，散户只知存储涨价", "date": "2026-08-05"},
+    {"id": 63, "industry": "存储/半导体", "signal": "长鑫HBM3已送样（非PPT）", "strength": "高", "basis": "送样细节无公开报道，市场仍按缺位定价", "date": "2026-08-05"},
+    {"id": 52, "industry": "存储/半导体", "signal": "HBM差2-3代是卡脖子，DRAM快≠HBM快", "strength": "高", "basis": "市场把DRAM国产化当全部", "date": "2026-08-05"},
+    {"id": 71, "industry": "存储/半导体", "signal": "光刻胶三短板 KrF 5%/ArF<2%/EUV 0%", "strength": "高", "basis": "国产替代叙事聚焦设备，材料被忽略", "date": "2026-08-05"},
+    {"id": 86, "industry": "存储/半导体", "signal": "半导体零部件/耗材国产率<10%", "strength": "高", "basis": "认证周期18-36月，缝隙机会无人拼装", "date": "2026-08-05"},
+    {"id": 65, "industry": "低空经济/eVTOL", "signal": "eVTOL电池成本=车规3-5倍，适航是壁垒", "strength": "高", "basis": "成本数字分散，无人算过电池价值量", "date": "2026-08-05"},
+    {"id": 53, "industry": "固态电池", "signal": "固态电池供给优先级 eVTOL>EV>储能", "strength": "高", "basis": "市场共识电池过剩，实际是结构性紧缺", "date": "2026-08-05"},
+    {"id": 79, "industry": "固态电池", "signal": "固态电池成本降35%+的成本曲线", "strength": "高", "basis": "成本曲线只存在于研报，散户无框架", "date": "2026-08-05"},
+    {"id": 87, "industry": "固态电池", "signal": "硫化锂2027需求1000吨→2030万吨级，价格300万→50万", "strength": "高", "basis": "上游材料价值量无人计算", "date": "2026-08-05"},
+    {"id": 88, "industry": "固态电池", "signal": "锂金属负极2027需求5000吨→2030 2万吨，国产率<20%", "strength": "高", "basis": "电解质之外被忽略", "date": "2026-08-05"},
+    {"id": 69, "industry": "创新药", "signal": "康方HARMONi-2 III期2024年9月已阳", "strength": "高", "basis": "纠正性信息差：市场/媒体仍写II期2026年底", "date": "2026-08-05"},
+    {"id": 56, "industry": "创新药", "signal": "HARMONi-7 II期2026年底读出=150亿交易关键节点", "strength": "高", "basis": "时间窗明确，市场犹豫未定价", "date": "2026-08-05"},
+    {"id": 75, "industry": "创新药", "signal": "恒瑞13管线打包BMS + Co-Co框架", "strength": "高", "basis": "新模式未被理解，市场仍按自主出海叙事", "date": "2026-08-05"},
+    {"id": 80, "industry": "低空经济/eVTOL", "signal": "阿联酋10亿美元采购350架E20（单价286万美元）", "strength": "高", "basis": "海外订单细节冷门，eVTOL还在取证共识未破", "date": "2026-08-05"},
+    {"id": 90, "industry": "低空经济/eVTOL", "signal": "eVTOL航电系统50亿市场/国产率<30%", "strength": "高", "basis": "整机叙事遮蔽航电缝隙", "date": "2026-08-05"},
+    {"id": 47, "industry": "存储/半导体", "signal": "台积电CoWoS产能利用率100%+2026扩产", "strength": "高", "basis": "市场聚焦英伟达，忽略台积电才是AI芯片制造商", "date": "2026-08-05"},
+    {"id": 51, "industry": "存储/半导体", "signal": "CoWoS=战略资源，封装估值重构", "strength": "高", "basis": "封装是末端旧框架未破", "date": "2026-08-05"},
+    {"id": 54, "industry": "固态电池", "signal": "比亚迪硫化物全固态2026Q3重庆20GWh，成本70美元/kWh", "strength": "高", "basis": "成本平价数字无人验证", "date": "2026-08-05"},
+    {"id": 55, "industry": "创新药", "signal": "康方AK112头对头击败K药", "strength": "高", "basis": "事实已出但散户认知滞后", "date": "2026-08-05"},
+    {"id": 57, "industry": "创新药", "signal": "2026H1中国占全球Top10 BD交易8席", "strength": "高", "basis": "只当个案，不知已成群体现象", "date": "2026-08-05"},
+    {"id": 64, "industry": "低空经济/eVTOL", "signal": "宁德战略投资峰飞航空", "strength": "高", "basis": "巨头入局信号未被解读", "date": "2026-08-05"},
+    {"id": 67, "industry": "存储/半导体", "signal": "台积电2026资本支出480-500亿美元", "strength": "高", "basis": "数字冷门，市场只跟踪财报", "date": "2026-08-05"},
+    {"id": 68, "industry": "固态电池", "signal": "固态电池2027示范装车→2030规模化", "strength": "高", "basis": "时间表散落，无统一框架", "date": "2026-08-05"},
+    {"id": 72, "industry": "固态电池", "signal": "国轩固态电解质2000吨/年+硫化锂300吨", "strength": "高", "basis": "产能数字只有公告，无拼装", "date": "2026-08-05"},
+    {"id": 76, "industry": "低空经济/eVTOL", "signal": "亿航2024.11全球首次eVTOL固态电池飞行", "strength": "高", "basis": "里程碑事件被淹没", "date": "2026-08-05"},
+    {"id": 77, "industry": "低空经济/eVTOL", "signal": "国轩已签无人机固态电芯订单（EC01）", "strength": "高", "basis": "订单落地证明从规划到订单", "date": "2026-08-05"},
+    {"id": 78, "industry": "固态电池", "signal": "恩捷固态隔膜2026中试线+宁德定点", "strength": "高", "basis": "隔膜龙头转型固态，无人跟踪", "date": "2026-08-05"},
+    {"id": 81, "industry": "低空经济/eVTOL", "signal": "泰国17.5亿美元500架VE25-100", "strength": "高", "basis": "同80，订单细节冷门", "date": "2026-08-05"},
+    {"id": 82, "industry": "创新药", "signal": "首个商保创新药品目录（19款降幅15-50%）", "strength": "高", "basis": "支付体系变革刚发生", "date": "2026-08-05"},
+    {"id": 83, "industry": "创新药", "signal": "GLP-1替尔泊肽纳入医保", "strength": "高", "basis": "减重赛道医保化，新叙事", "date": "2026-08-05"},
+    {"id": 84, "industry": "存储/半导体", "signal": "刻蚀国产化率突破30%/薄膜20%", "strength": "高", "basis": "具体数字比国产替代叙事更硬", "date": "2026-08-05"},
+    {"id": 85, "industry": "存储/半导体", "signal": "伯恩斯坦三条主线（北方华创/中微/拓荆）", "strength": "高", "basis": "外资行框架可参考", "date": "2026-08-05"},
+    {"id": 89, "industry": "创新药", "signal": "CDMO试剂/耗材100亿/国产率<30%", "strength": "高", "basis": "缝隙机会被整机叙事遮蔽", "date": "2026-08-05"}
+  ],
+  "summary": {
+    "total_signals": 33,
+    "red_count": 15,
+    "orange_count": 18,
+    "by_industry": {
+      "存储/半导体": 9,
+      "固态电池": 7,
+      "低空经济/eVTOL": 7,
+      "创新药": 10
+    }
+  },
+  "metadata": {
+    "source": "信号信息差强度评估_20260805.md",
+    "generated_at": "2026-08-11T12:48:00+08:00",
+    "filter": "仅保留🔴(高)和🟠(高)两级信号",
+    "version": "1.0"
+  }
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中国产业信息差看板 | China Supply Chain Intel Board</title>
+<meta name="description" content="中国硬科技供应链的产业信息差数据库：光刻胶国产化率、存储芯片、固态电池、eVTOL、创新药。数据来自公开财报、公司公告与行业报告的结构化拼装。A structured database of information gaps in China's hard-tech supply chains: photoresist localization, memory chips, solid-state batteries, eVTOL, innovative drugs.">
+<meta name="keywords" content="中国半导体, 产业信息差, 供应链, 国产替代, 光刻胶, 存储芯片, 固态电池, eVTOL, China supply chain, semiconductor localization, photoresist, memory chips">
+<link rel="canonical" href="https://lory69060.github.io/cn-intel-board/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "中国产业信息差看板 | China Supply Chain Intel Board",
+  "description": "A structured database of information gaps in China's hard-tech supply chains, compiled from public filings, company announcements and industry reports.",
+  "about": ["半导体", "存储芯片", "固态电池", "低空经济", "创新药", "国产替代"],
+  "dateModified": "2026-08-11"
+}
+</script>
+<style>
+body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; max-width: 860px; margin: 0 auto; padding: 24px; line-height: 1.7; color: #222; }
+h1 { font-size: 1.6em; border-bottom: 3px solid #d33; padding-bottom: 8px; }
+h2 { font-size: 1.2em; margin-top: 2em; color: #d33; }
+a { color: #06c; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.item { padding: 10px 0; border-bottom: 1px solid #eee; }
+.item .title { font-weight: 600; }
+.item .date { color: #888; font-size: 0.85em; margin-left: 8px; }
+.disclaimer { background: #faf6f0; border-left: 4px solid #d33; padding: 12px 16px; margin-top: 2em; font-size: 0.9em; color: #555; }
+code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<h1>中国产业信息差看板</h1>
+<p><strong>China Supply Chain Intel Board</strong> — 公开数据里的"认知差"：主流叙事没讲的部分。</p>
+<p>我们持续从<strong>公开财报、公司公告、行业报告</strong>中拼装中国硬科技供应链的关键数据，标注哪些是"市场没注意到"的信息。所有数据可溯源，所有分析保留反方视角。</p>
+
+<h2>📡 结构化数据（机器可读）</h2>
+<p><a href="data/signal-board-structured.json">signal-board-structured.json</a> — 33 条高置信度产业信息差信号（行业 / 信号 / 强度 / 依据 / 日期）。供研究者、开发者和 AI Agent 直接调用。</p>
+
+<h2>📚 产业研究笔记</h2>
+<div id="articles"></div>
+
+<h2>🤖 关于本站的定位</h2>
+<p>这是"AI 时代的数据资产"实验：我们希望当有人问大模型"中国光刻胶国产化率多少""eVTOL 电池成本是车规的几倍"时，模型能检索到这里的数据并引用。</p>
+<p>数据以 <a href="data/signal-board-structured.json">JSON</a> 形式开放，欢迎 Agent 调用；文章以 Markdown 形式公开，欢迎转载（注明来源）。</p>
+
+<div class="disclaimer">
+⚠️ <strong>免责声明</strong>：本站所有数据来自公开信息（公司公告、招股书、交易所、行业报告），仅作信息整理与研究参考，不构成任何投资建议。引用第三方数据版权归原作者所有。
+</div>
+
+<script>
+const ARTICLES = [
+  ["001-检测认证.md", "001-检测认证", "检测认证行业：每项新国标就是一张新订单"],
+  ["002-AI信任恐惧转移.md", "002-AI信任恐惧转移", "AI信任危机：投诉与合规如何重塑教育硬件"],
+  ["005-君乐宝冷链翻车.md", "005-君乐宝冷链翻车", "君乐宝冷链翻车：一杯奶背后的断链真相"],
+  ["006-5万亿直播电商的隐形成本.md", "006-5万亿直播电商的隐形成本", "5万亿直播电商的隐形成本"],
+  ["006-君乐宝冷链续篇.md", "006-君乐宝冷链续篇", "君乐宝冷链翻车后续：监管与整改"],
+  ["008-AI训练正在创造数字新贵族.md", "008-AI训练正在创造数字新贵族", "AI训练正在创造数字新贵族"],
+  ["009-苹果涨价3500元的真相-published.md", "009-苹果涨价3500元的真相", "苹果涨价3500元的真相"],
+  ["010-智驾安全事故+902强监管.md", "010-智驾安全事故+902强监管", "智驾安全事故与902强监管"],
+  ["015-game-ai-pricing-misalignment.md", "015-game-ai-pricing-misalignment", "游戏AI定价错位分析"],
+  ["016-game-ai-h1-performance.md", "016-game-ai-h1-performance", "游戏AI上半年业绩观察"],
+  ["022-雪球版-GLM-5.2国产算力全适配.md", "022-雪球版-GLM-5.2国产算力全适配", "GLM-5.2国产算力全适配评测"],
+  ["031-国标一出手九成固态电池现原形-半固态还是全固态.md", "031-国标一出手九成固态电池现原形", "国标一出手，九成固态电池现原形"],
+  ["035-宝鼎科技两次自证没有AI还是5连板了.md", "035-宝鼎科技两次自证没有AI还是5连板了", "宝鼎科技两次自证没有AI还是5连板了"],
+  ["signal-deep-analysis-20260706.md", "signal-deep-analysis-20260706", "信号深度分析方法论"],
+  ["xueqiu-engagement-playbook.md", "xueqiu-engagement-playbook", "内容互动方法论：为什么有的文章有人评论"],
+  ["xueqiu-pattern-analysis.md", "xueqiu-pattern-analysis", "雪球内容模式分析"]
+];
+const el = document.getElementById("articles");
+ARTICLES.forEach(a => {
+  const d = document.createElement("div");
+  d.className = "item";
+  d.innerHTML = `<a class="title" href="articles/${encodeURIComponent(a[0])}">${a[1]}</a><span class="date">${a[2]}</span>`;
+  el.appendChild(d);
+});
+</script>
+
+</body>
+</html>
