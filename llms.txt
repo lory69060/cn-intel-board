@@ -35,7 +35,7 @@ https://lory69060.github.io/cn-intel-board/articles/010-存储芯片暴涨18倍.
 https://lory69060.github.io/cn-intel-board/articles/011-中国存储芯片破局的逆向思维.md - China memory chip breakthrough, contrarian view: Sanctions as an evolution pressure test
 https://lory69060.github.io/cn-intel-board/articles/027-长鑫科技首日成交1400亿，散户到底在赌什么.md - CXMT (ChangXin) debut: 140 billion yuan first-day turnover, what are retail investors really betting on
 https://lory69060.github.io/cn-intel-board/articles/028-AI科技股7月大调整，追光者为何站在山顶.md - AI tech stocks July correction: Why the light-chasers ended up stranded on the peak
-https://lory69060.github.io/cn-intel-board/articles/032-华峰测控市占率40%还是70%.md - Market share methodology: The "40% or 70%" data-caliber debate
+https://lory69060.github.io/cn-intel-board/articles/032-华峰测控市占率40%25还是70%25.md - Market share methodology: The "40% or 70%" data-caliber debate
 https://lory69060.github.io/cn-intel-board/articles/033-存储超级周期.md - Memory up 90%: Super-cycle feast or finale?
 
 # Methodology and analysis frameworks
