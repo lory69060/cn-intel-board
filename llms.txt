@@ -29,6 +29,8 @@ https://lory69060.github.io/cn-intel-board/articles/031-国标一出手九成固
 https://lory69060.github.io/cn-intel-board/articles/035-宝鼎科技两次自证没有AI还是5连板了.md - Baoding Technology: Two denials of AI connection still led to 5 consecutive limit-ups
 
 # Research notes (desensitized public editions)
+https://lory69060.github.io/cn-intel-board/articles/002-A%E8%82%A1%E4%BA%A4%E6%98%93%E6%96%B0%E8%A7%84.md - Four new rules align trading with global standards
+
 https://lory69060.github.io/cn-intel-board/articles/001-检测认证.md - July 1 new national standards: Certification industry players eating the "standard threshold" meal are pulling ahead
 https://lory69060.github.io/cn-intel-board/articles/003-冷链.md - Junlebao cold chain failure at 35°C: What a milk cup reveals about China's cold chain vulnerabilities
 https://lory69060.github.io/cn-intel-board/articles/010-存储芯片暴涨18倍.md - Memory chips as strategic resource: From cyclical commodity to AI-era infrastructure
