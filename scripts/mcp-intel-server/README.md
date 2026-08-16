@@ -10,7 +10,7 @@ MCP (Model Context Protocol) server exposing **China hard-tech supply chain inte
 |:-----|:------------|
 | `read_signal_board` | 信号信息差看板 — 33 structured signals (storage/semiconductors, rare earth, EV, AI infra…). Each signal carries `predicted_on` / `verify_by` / `verify_event` / `result` — a **verifiable track record**, not just claims. |
 | `get_track_record` | 信号命中率统计 — hit-rate analytics across all signals by industry. |
-| `ask_edge` | 问答式信息差 — edge/contrarian intel on a topic (GLM-assisted, returns evidence + sources). |
+| `ask_edge` | 问答式信息差 — edge/contrarian intel on a topic (keyword-scored against our verified signal board, returns evidence + sources). |
 | `read_earnings_tracker` | 2026 H1 earnings tracker — 7 companies' publicly disclosed results (akshare-verified, updated daily to 8/31). |
 
 ## 🚀 Quick Start
