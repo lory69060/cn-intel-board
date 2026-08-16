@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>数据服务 | China Supply Chain Intel — MCP 数据接口</title>
+<meta name="description" content="中国硬科技供应链信息差数据服务：MCP 远程数据接口，33 条可验证信号、中报追踪、信息差问答。为 AI Agent、研究者、开发者提供机器可读的中国供应链情报。China hard-tech supply chain intel as a machine-readable data service for AI agents.">
+<link rel="canonical" href="https://lory69060.github.io/cn-intel-board/data-services.html">
+<style>
+body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; max-width: 860px; margin: 0 auto; padding: 24px; line-height: 1.7; color: #222; }
+h1 { font-size: 1.6em; border-bottom: 3px solid #d33; padding-bottom: 8px; }
+h2 { font-size: 1.2em; margin-top: 2em; color: #d33; }
+a { color: #06c; text-decoration: none; }
+a:hover { text-decoration: underline; }
+code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; }
+table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+th, td { border: 1px solid #ddd; padding: 8px 12px; text-align: left; font-size: 0.92em; }
+th { background: #faf6f0; }
+.disclaimer { background: #faf6f0; border-left: 4px solid #d33; padding: 12px 16px; margin-top: 2em; font-size: 0.9em; color: #555; }
+.contact { background: #f0f6fa; border-left: 4px solid #06c; padding: 12px 16px; margin-top: 2em; }
+</style>
+</head>
+<body>
+
+<h1>数据服务 · Data Services</h1>
+<p><strong>China Supply Chain Intel</strong> — 中国硬科技供应链的机器可读情报，专为 AI Agent 与研究者设计。</p>
+
+<h2>🔌 MCP 远程接口（推荐）</h2>
+<p>通过 Model Context Protocol (MCP) 直接调用，任意 MCP 客户端（Claude / DeepSeek Harness / 自研 Agent）均可接入：</p>
+<table>
+<tr><th>项</th><th>值</th></tr>
+<tr><td>端点</td><td><code>https://cn-intel-mcp.lory69060.workers.dev/mcp</code></td></tr>
+<tr><td>协议</td><td>MCP Streamable HTTP（JSON-RPC）</td></tr>
+<tr><td>鉴权</td><td>Bearer Token（访问令牌申请见文末联系）</td></tr>
+<tr><td>数据源</td><td>公开财报 / 公司公告 / 行业报告（全部可溯源）</td></tr>
+</table>
+
+<h3>工具清单（6 个）</h3>
+<table>
+<tr><th>工具</th><th>说明</th></tr>
+<tr><td><code>read_signal_board</code></td><td>33 条高置信度产业信息差信号（含 predicted_on / verify_by / verify_event / result 验证字段）</td></tr>
+<tr><td><code>read_earnings_tracker</code></td><td>2026 中报信号验证追踪（7 家公司公开披露，akshare 实测）</td></tr>
+<tr><td><code>get_track_record</code></td><td>信号验证记录：按行业命中率统计——时间积累的判断层资产</td></tr>
+<tr><td><code>ask_edge</code></td><td>问答式信息差查询：自然语言提问，返回相关信号与依据</td></tr>
+<tr><td><code>list_articles</code></td><td>产业研究文章清单（25+ 篇一手调查笔记）</td></tr>
+<tr><td><code>read_article</code></td><td>读取研究文章全文</td></tr>
+</table>
+
+<h2>📦 数据资产（直接下载）</h2>
+<ul>
+<li><a href="signal-board-structured.json">signal-board-structured.json</a> — 33 条信号（含验证记录字段）</li>
+<li><a href="data/earnings-tracker-2026H1.json">earnings-tracker-2026H1.json</a> — 2026 中报追踪</li>
+<li><a href="llms.txt">llms.txt</a> — 全站机器可读索引</li>
+<li><a href="track-record.html">track-record.html</a> — 信号验证记录公开页</li>
+</ul>
+
+<h2>🤖 适合谁</h2>
+<ul>
+<li><strong>AI Agent / 应用开发者</strong>：把真实、可验证的中国供应链数据接入你的产品——不是新闻标题，是结构化判断</li>
+<li><strong>行业研究者</strong>：产业链信息差视角的一手调查笔记</li>
+<li><strong>跨境/供应链从业者</strong>：存储、半导体、固态电池、低空经济、创新药的关键变量</li>
+</ul>
+
+<h2>📬 合作与访问令牌</h2>
+<div class="contact">
+<p>需要访问令牌、定制监控主题（指定产业链）、数据授权或白标接入：</p>
+<p>📧 <strong>lory69060@hotmail.com</strong>（注明用途与预计调用量）</p>
+</div>
+
+<div class="disclaimer">
+<strong>免责声明：</strong>本站所有数据来自公开披露信息，仅用于研究与交叉验证，不构成任何投资建议。信号均带验证节点与结果记录，历史命中率公开可查。
+</div>
+
+<p style="margin-top:2em; font-size:0.9em; color:#888;"><a href="index.html">← 返回看板首页</a></p>
+</body>
+</html>

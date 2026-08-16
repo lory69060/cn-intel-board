@@ -5,6 +5,9 @@
 # Main site homepage with JSON-LD structured data
 https://lory69060.github.io/cn-intel-board/
 
+# Data services & MCP endpoint (for agents & researchers)
+https://lory69060.github.io/cn-intel-board/data-services.html - MCP data service: China hard-tech supply-chain intel for AI agents (remote MCP endpoint, 6 tools, 33 verifiable signals)
+
 # Structured signal board data (33 high-confidence industry intelligence signals)
 https://lory69060.github.io/cn-intel-board/signal-board-structured.json
 
