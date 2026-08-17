@@ -1,0 +1,88 @@
+{
+ "schema_version": "1.0",
+ "divergence_signals": [
+  {
+   "id": 1,
+   "topic": "半导体周期",
+   "view_a": {
+    "author": "洪灏",
+    "stance": "看空",
+    "statement": "半导体周期已见顶，美国机构与散户仓位过高，标普空间有限",
+    "source": "洪灏星球2026-07-07《三星》+ 新浪财经2026-03-05报道",
+    "authority_level": "顶级"
+   },
+   "view_b": {
+    "author": "梁文锋",
+    "stance": "看多",
+    "statement": "离Scaling墙还很远，硅谷说到头是硅谷到头，算力需求未触及上限",
+    "source": "DeepSeek投资者交流会录音稿2026-05-20",
+    "authority_level": "顶级"
+   },
+   "divergence_dimension": "周期判断",
+   "divergence_score": 8,
+   "date": "2026-08-17",
+   "verify_by": "2026-12-31",
+   "verify_event": "半导体板块Q4表现：若周期见顶则大幅回调，若需求持续则维持高位",
+   "result": "待验证",
+   "result_note": ""
+  },
+  {
+   "id": 2,
+   "topic": "AI基建投资阶段",
+   "view_a": {
+    "author": "鉴茶院",
+    "stance": "看多",
+    "statement": "AI基建三阶段论：阶段一（算力）→阶段二（模型）→阶段三（应用），当前处于阶段一晚期/阶段二早期",
+    "source": "鉴茶院2026-07-07《263课 重磅，AI基建的三阶段》",
+    "authority_level": "知名"
+   },
+   "view_b": {
+    "author": "洪灏",
+    "stance": "看空",
+    "statement": "AI板块已出现泡沫，2025年10-12月已提出此判断，相关价格飙升已把预期充分打满",
+    "source": "洪灏星球2026-07-07",
+    "authority_level": "顶级"
+   },
+   "divergence_dimension": "时间判断",
+   "divergence_score": 7,
+   "date": "2026-08-17",
+   "verify_by": "2027-06-30",
+   "verify_event": "AI应用层是否有爆发式产品出现（如Agent规模化落地），验证阶段三是否到来",
+   "result": "待验证",
+   "result_note": ""
+  },
+  {
+   "id": 3,
+   "topic": "算力过剩",
+   "view_a": {
+    "author": "猫哥",
+    "stance": "看多",
+    "statement": "算力过剩是伪命题，需求永远比供给增长快，瓶颈永远在下一个环节",
+    "source": "雪球猫哥观点",
+    "authority_level": "知名"
+   },
+   "view_b": {
+    "author": "市场共识",
+    "stance": "看空",
+    "statement": "AI资本开支过度，算力将过剩，英伟达等芯片厂商将面临需求下滑",
+    "source": "多家投行研报",
+    "authority_level": "机构"
+   },
+   "divergence_dimension": "供需判断",
+   "divergence_score": 6,
+   "date": "2026-08-17",
+   "verify_by": "2027-03-31",
+   "verify_event": "英伟达/AMD季度财报中的数据中心营收增速及指引，验证是否存在过剩",
+   "result": "待验证",
+   "result_note": ""
+  }
+ ],
+ "track_record": {
+  "total_signals": 3,
+  "pending": 3,
+  "verified": 0,
+  "hit": 0,
+  "miss": 0,
+  "hit_rate": null
+ }
+}
