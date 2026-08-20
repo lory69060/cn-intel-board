@@ -1,4 +1,10 @@
 {
+  "version": "1.0",
+  "generated_at": "2026-08-20T12:06:02.331948",
+  "health": {
+    "scoring": true,
+    "last_error": null
+  },
   "signals": [
     {
       "id": 46,
@@ -12,10 +18,15 @@
       "verify_event": "长鑫正式披露招股书财务数据或上市后首份财报，核对净利/毛利/份额",
       "result": "待验证",
       "result_note": "",
-      "source_tier": 1,
-      "observed_at": "2026-08-05",
-      "corroboration": 1,
-      "source_note": "招股书=官方一手文件"
+      "alpha_score": "中",
+      "backtest": {
+        "win_rate": 56.4,
+        "avg_return": 3.3,
+        "best_hold_days": 30,
+        "samples": 335
+      },
+      "suggestion": "观察跟踪，30天验证",
+      "status": "active"
     },
     {
       "id": 63,
@@ -29,10 +40,15 @@
       "verify_event": "长鑫 HBM3 送样获得客户/供应链公开佐证（报道/公告）",
       "result": "待验证",
       "result_note": "",
-      "source_tier": 3,
-      "observed_at": "2026-08-05",
-      "corroboration": 1,
-      "source_note": "送样细节无公开报道，供应链传闻"
+      "alpha_score": "中",
+      "backtest": {
+        "win_rate": 56.4,
+        "avg_return": 3.3,
+        "best_hold_days": 30,
+        "samples": 335
+      },
+      "suggestion": "观察跟踪，30天验证",
+      "status": "active"
     },
     {
       "id": 52,
@@ -46,10 +62,15 @@
       "verify_event": "2026H2 HBM 国产化进展（HBM2E/3 量产节点）公开信息",
       "result": "待验证",
       "result_note": "",
-      "source_tier": 3,
-      "observed_at": "2026-08-05",
-      "corroboration": 1,
-      "source_note": "行业分析"
+      "alpha_score": "中",
+      "backtest": {
+        "win_rate": 56.4,
+        "avg_return": 3.3,
+        "best_hold_days": 30,
+        "samples": 335
+      },
+      "suggestion": "观察跟踪，30天验证",
+      "status": "active"
     },
     {
       "id": 71,
@@ -63,10 +84,15 @@
       "verify_event": "2026 年底光刻胶国产化率数据（KrF/ArF/EUV 各档位）",
       "result": "待验证",
       "result_note": "",
-      "source_tier": 3,
-      "observed_at": "2026-08-05",
-      "corroboration": 1,
-      "source_note": "行业数据估算"
+      "alpha_score": "中",
+      "backtest": {
+        "win_rate": 56.4,
+        "avg_return": 3.3,
+        "best_hold_days": 30,
+        "samples": 335
+      },
+      "suggestion": "观察跟踪，30天验证",
+      "status": "active"
     },
     {
       "id": 86,
@@ -80,10 +106,15 @@
       "verify_event": "2026 年底半导体零部件/耗材国产化率行业数据",
       "result": "待验证",
       "result_note": "",
-      "source_tier": 3,
-      "observed_at": "2026-08-05",
-      "corroboration": 1,
-      "source_note": "行业数据估算"
+      "alpha_score": "中",
+      "backtest": {
+        "win_rate": 56.4,
+        "avg_return": 3.3,
+        "best_hold_days": 30,
+        "samples": 335
+      },
+      "suggestion": "观察跟踪，30天验证",
+      "status": "active"
     },
     {
       "id": 65,
@@ -97,10 +128,15 @@
       "verify_event": "eVTOL 电池成本公开数据（是否车规 3-5 倍、适航壁垒是否确认）",
       "result": "待验证",
       "result_note": "",
-      "source_tier": 3,
-      "observed_at": "2026-08-05",
-      "corroboration": 1,
-      "source_note": "成本测算"
+      "alpha_score": "中",
+      "backtest": {
+        "win_rate": 55.0,
+        "avg_return": 0.6,
+        "best_hold_days": 14,
+        "samples": 351
+      },
+      "suggestion": "观察跟踪，14天验证",
+      "status": "active"
     },
     {
       "id": 53,
@@ -114,10 +150,15 @@
       "verify_event": "2026H2 固态电池装车/订单供给分布（eVTOL vs EV vs 储能）",
       "result": "待验证",
       "result_note": "",
-      "source_tier": 3,
-      "observed_at": "2026-08-05",
-      "corroboration": 1,
-      "source_note": "行业分析"
+      "alpha_score": "低",
+      "backtest": {
+        "win_rate": 0,
+        "avg_return": 0,
+        "best_hold_days": null,
+        "samples": 0
+      },
+      "suggestion": "降级观察，30天后决定是否放弃",
+      "status": "观察"
     },
     {
       "id": 79,
@@ -131,10 +172,15 @@
       "verify_event": "2026 年底固态电池成本公开数据（是否降 35%+）",
       "result": "待验证",
       "result_note": "",
-      "source_tier": 3,
-      "observed_at": "2026-08-05",
-      "corroboration": 1,
-      "source_note": "研报成本曲线"
+      "alpha_score": "低",
+      "backtest": {
+        "win_rate": 0,
+        "avg_return": 0,
+        "best_hold_days": null,
+        "samples": 0
+      },
+      "suggestion": "降级观察，30天后决定是否放弃",
+      "status": "观察"
     },
     {
       "id": 87,
@@ -148,10 +194,15 @@
       "verify_event": "2027H1 硫化锂需求/价格数据（1000 吨需求、价格曲线）",
       "result": "待验证",
       "result_note": "",
-      "source_tier": 3,
-      "observed_at": "2026-08-05",
-      "corroboration": 1,
-      "source_note": "行业预测"
+      "alpha_score": "低",
+      "backtest": {
+        "win_rate": 0,
+        "avg_return": 0,
+        "best_hold_days": null,
+        "samples": 0
+      },
+      "suggestion": "降级观察，30天后决定是否放弃",
+      "status": "观察"
     },
     {
       "id": 88,
@@ -165,10 +216,15 @@
       "verify_event": "2027H1 锂金属负极需求与国产化率数据",
       "result": "待验证",
       "result_note": "",
-      "source_tier": 3,
-      "observed_at": "2026-08-05",
-      "corroboration": 1,
-      "source_note": "行业预测"
+      "alpha_score": "低",
+      "backtest": {
+        "win_rate": 0,
+        "avg_return": 0,
+        "best_hold_days": null,
+        "samples": 0
+      },
+      "suggestion": "降级观察，30天后决定是否放弃",
+      "status": "观察"
     },
     {
       "id": 69,
@@ -182,10 +238,15 @@
       "verify_event": "康方 HARMONi-2 III 期数据正式读出/发表（市场认知纠正）",
       "result": "待验证",
       "result_note": "",
-      "source_tier": 2,
-      "observed_at": "2026-08-05",
-      "corroboration": 1,
-      "source_note": "临床试验公开数据，待正式读出"
+      "alpha_score": "中",
+      "backtest": {
+        "win_rate": 52.0,
+        "avg_return": 0.23,
+        "best_hold_days": 7,
+        "samples": 358
+      },
+      "suggestion": "观察跟踪，7天验证",
+      "status": "active"
     },
     {
       "id": 56,
@@ -199,10 +260,15 @@
       "verify_event": "HARMONi-7 II 期 2026 年底读出（150 亿交易关键节点）",
       "result": "待验证",
       "result_note": "",
-      "source_tier": 2,
-      "observed_at": "2026-08-05",
-      "corroboration": 1,
-      "source_note": "临床试验公开时间节点"
+      "alpha_score": "中",
+      "backtest": {
+        "win_rate": 52.0,
+        "avg_return": 0.23,
+        "best_hold_days": 7,
+        "samples": 358
+      },
+      "suggestion": "观察跟踪，7天验证",
+      "status": "active"
     },
     {
       "id": 75,
@@ -216,10 +282,15 @@
       "verify_event": "恒瑞-BMS 13 管线打包交易正式官宣/交割",
       "result": "待验证",
       "result_note": "",
-      "source_tier": 3,
-      "observed_at": "2026-08-05",
-      "corroboration": 1,
-      "source_note": "市场消息，交易未官宣"
+      "alpha_score": "中",
+      "backtest": {
+        "win_rate": 52.0,
+        "avg_return": 0.23,
+        "best_hold_days": 7,
+        "samples": 358
+      },
+      "suggestion": "观察跟踪，7天验证",
+      "status": "active"
     },
     {
       "id": 80,
@@ -233,10 +304,15 @@
       "verify_event": "阿联酋 350 架 E20 采购订单正式落地（签约/交付）公告",
       "result": "待验证",
       "result_note": "",
-      "source_tier": 2,
-      "observed_at": "2026-08-05",
-      "corroboration": 1,
-      "source_note": "海外媒体报道，正式落地待验证"
+      "alpha_score": "中",
+      "backtest": {
+        "win_rate": 55.0,
+        "avg_return": 0.6,
+        "best_hold_days": 14,
+        "samples": 351
+      },
+      "suggestion": "观察跟踪，14天验证",
+      "status": "active"
     },
     {
       "id": 90,
@@ -250,10 +326,15 @@
       "verify_event": "2026 年底 eVTOL 航电系统市场/国产化率数据",
       "result": "待验证",
       "result_note": "",
-      "source_tier": 3,
-      "observed_at": "2026-08-05",
-      "corroboration": 1,
-      "source_note": "行业估算"
+      "alpha_score": "中",
+      "backtest": {
+        "win_rate": 55.0,
+        "avg_return": 0.6,
+        "best_hold_days": 14,
+        "samples": 351
+      },
+      "suggestion": "观察跟踪，14天验证",
+      "status": "active"
     },
     {
       "id": 47,
@@ -267,10 +348,15 @@
       "verify_event": "台积电 2026Q4 法说会：CoWoS 产能利用率与 2027 扩产计划",
       "result": "待验证",
       "result_note": "",
-      "source_tier": 2,
-      "observed_at": "2026-08-05",
-      "corroboration": 1,
-      "source_note": "法说会公开指引"
+      "alpha_score": "中",
+      "backtest": {
+        "win_rate": 56.4,
+        "avg_return": 3.3,
+        "best_hold_days": 30,
+        "samples": 335
+      },
+      "suggestion": "观察跟踪，30天验证",
+      "status": "active"
     },
     {
       "id": 51,
@@ -284,10 +370,15 @@
       "verify_event": "2026H2 封装/先进封装板块估值重构是否发生（板块相对收益）",
       "result": "待验证",
       "result_note": "",
-      "source_tier": 3,
-      "observed_at": "2026-08-05",
-      "corroboration": 1,
-      "source_note": "市场分析"
+      "alpha_score": "中",
+      "backtest": {
+        "win_rate": 56.4,
+        "avg_return": 3.3,
+        "best_hold_days": 30,
+        "samples": 335
+      },
+      "suggestion": "观察跟踪，30天验证",
+      "status": "active"
     },
     {
       "id": 54,
@@ -301,10 +392,15 @@
       "verify_event": "比亚迪硫化物全固态 2026Q3 重庆 20GWh 产线落地进展公告",
       "result": "待验证",
       "result_note": "",
-      "source_tier": 1,
-      "observed_at": "2026-08-05",
-      "corroboration": 1,
-      "source_note": "比亚迪官方发布会/公告"
+      "alpha_score": "低",
+      "backtest": {
+        "win_rate": 0,
+        "avg_return": 0,
+        "best_hold_days": null,
+        "samples": 0
+      },
+      "suggestion": "降级观察，30天后决定是否放弃",
+      "status": "观察"
     },
     {
       "id": 55,
@@ -318,10 +414,15 @@
       "verify_event": "康方 AK112 头对头数据公开/监管进展",
       "result": "待验证",
       "result_note": "",
-      "source_tier": 2,
-      "observed_at": "2026-08-05",
-      "corroboration": 1,
-      "source_note": "头对头临床数据已公开"
+      "alpha_score": "中",
+      "backtest": {
+        "win_rate": 52.0,
+        "avg_return": 0.23,
+        "best_hold_days": 7,
+        "samples": 358
+      },
+      "suggestion": "观察跟踪，7天验证",
+      "status": "active"
     },
     {
       "id": 57,
@@ -335,10 +436,15 @@
       "verify_event": "2026 全年中国 BD 交易占全球 Top10 席位复盘",
       "result": "待验证",
       "result_note": "",
-      "source_tier": 2,
-      "observed_at": "2026-08-05",
-      "corroboration": 1,
-      "source_note": "行业统计（BD交易盘点）"
+      "alpha_score": "中",
+      "backtest": {
+        "win_rate": 52.0,
+        "avg_return": 0.23,
+        "best_hold_days": 7,
+        "samples": 358
+      },
+      "suggestion": "观察跟踪，7天验证",
+      "status": "active"
     },
     {
       "id": 64,
@@ -352,10 +458,15 @@
       "verify_event": "宁德-峰飞战略合作实质进展（投资交割/合作公告）",
       "result": "待验证",
       "result_note": "",
-      "source_tier": 2,
-      "observed_at": "2026-08-05",
-      "corroboration": 1,
-      "source_note": "媒体广泛报道，交割待确认"
+      "alpha_score": "中",
+      "backtest": {
+        "win_rate": 55.0,
+        "avg_return": 0.6,
+        "best_hold_days": 14,
+        "samples": 351
+      },
+      "suggestion": "观察跟踪，14天验证",
+      "status": "active"
     },
     {
       "id": 67,
@@ -369,10 +480,15 @@
       "verify_event": "台积电 2026 实际资本支出 vs 480-500 亿美元预测",
       "result": "待验证",
       "result_note": "",
-      "source_tier": 1,
-      "observed_at": "2026-08-05",
-      "corroboration": 1,
-      "source_note": "台积电法说会官方资本支出指引"
+      "alpha_score": "中",
+      "backtest": {
+        "win_rate": 56.4,
+        "avg_return": 3.3,
+        "best_hold_days": 30,
+        "samples": 335
+      },
+      "suggestion": "观察跟踪，30天验证",
+      "status": "active"
     },
     {
       "id": 68,
@@ -386,10 +502,15 @@
       "verify_event": "2027 年示范装车时间表是否兑现（装车数量/车型）",
       "result": "待验证",
       "result_note": "",
-      "source_tier": 3,
-      "observed_at": "2026-08-05",
-      "corroboration": 1,
-      "source_note": "行业时间表整理"
+      "alpha_score": "低",
+      "backtest": {
+        "win_rate": 0,
+        "avg_return": 0,
+        "best_hold_days": null,
+        "samples": 0
+      },
+      "suggestion": "降级观察，30天后决定是否放弃",
+      "status": "观察"
     },
     {
       "id": 72,
@@ -403,10 +524,15 @@
       "verify_event": "国轩固态电解质 2000 吨/年产线投产公告/产能爬坡",
       "result": "待验证",
       "result_note": "",
-      "source_tier": 1,
-      "observed_at": "2026-08-05",
-      "corroboration": 1,
-      "source_note": "国轩官方公告产能数字"
+      "alpha_score": "低",
+      "backtest": {
+        "win_rate": 0,
+        "avg_return": 0,
+        "best_hold_days": null,
+        "samples": 0
+      },
+      "suggestion": "降级观察，30天后决定是否放弃",
+      "status": "观察"
     },
     {
       "id": 76,
@@ -420,10 +546,15 @@
       "verify_event": "亿航固态电池飞行里程碑被行业引用/后续装车进展",
       "result": "待验证",
       "result_note": "",
-      "source_tier": 2,
-      "observed_at": "2026-08-05",
-      "corroboration": 1,
-      "source_note": "公司里程碑事件+媒体报道"
+      "alpha_score": "中",
+      "backtest": {
+        "win_rate": 55.0,
+        "avg_return": 0.6,
+        "best_hold_days": 14,
+        "samples": 351
+      },
+      "suggestion": "观察跟踪，14天验证",
+      "status": "active"
     },
     {
       "id": 77,
@@ -437,10 +568,15 @@
       "verify_event": "国轩无人机固态电芯订单 EC01 交付/放量公告",
       "result": "待验证",
       "result_note": "",
-      "source_tier": 1,
-      "observed_at": "2026-08-05",
-      "corroboration": 1,
-      "source_note": "国轩订单公告"
+      "alpha_score": "中",
+      "backtest": {
+        "win_rate": 55.0,
+        "avg_return": 0.6,
+        "best_hold_days": 14,
+        "samples": 351
+      },
+      "suggestion": "观察跟踪，14天验证",
+      "status": "active"
     },
     {
       "id": 78,
@@ -454,10 +590,15 @@
       "verify_event": "恩捷固态隔膜 2026 中试线投产公告 + 宁德定点进展",
       "result": "待验证",
       "result_note": "",
-      "source_tier": 1,
-      "observed_at": "2026-08-05",
-      "corroboration": 1,
-      "source_note": "恩捷公告+宁德定点"
+      "alpha_score": "低",
+      "backtest": {
+        "win_rate": 0,
+        "avg_return": 0,
+        "best_hold_days": null,
+        "samples": 0
+      },
+      "suggestion": "降级观察，30天后决定是否放弃",
+      "status": "观察"
     },
     {
       "id": 81,
@@ -471,10 +612,15 @@
       "verify_event": "泰国 500 架 VE25-100 订单落地进展公告",
       "result": "待验证",
       "result_note": "",
-      "source_tier": 2,
-      "observed_at": "2026-08-05",
-      "corroboration": 1,
-      "source_note": "海外媒体报道，落地待验证"
+      "alpha_score": "中",
+      "backtest": {
+        "win_rate": 55.0,
+        "avg_return": 0.6,
+        "best_hold_days": 14,
+        "samples": 351
+      },
+      "suggestion": "观察跟踪，14天验证",
+      "status": "active"
     },
     {
       "id": 82,
@@ -488,10 +634,15 @@
       "verify_event": "商保创新药目录执行落地（报销案例/放量数据）",
       "result": "待验证",
       "result_note": "",
-      "source_tier": 1,
-      "observed_at": "2026-08-05",
-      "corroboration": 1,
-      "source_note": "政策文件官方发布"
+      "alpha_score": "中",
+      "backtest": {
+        "win_rate": 52.0,
+        "avg_return": 0.23,
+        "best_hold_days": 7,
+        "samples": 358
+      },
+      "suggestion": "观察跟踪，7天验证",
+      "status": "active"
     },
     {
       "id": 83,
@@ -505,10 +656,15 @@
       "verify_event": "替尔泊肽医保执行（处方量/放量）公开数据",
       "result": "待验证",
       "result_note": "",
-      "source_tier": 1,
-      "observed_at": "2026-08-05",
-      "corroboration": 1,
-      "source_note": "医保目录官方发布"
+      "alpha_score": "中",
+      "backtest": {
+        "win_rate": 52.0,
+        "avg_return": 0.23,
+        "best_hold_days": 7,
+        "samples": 358
+      },
+      "suggestion": "观察跟踪，7天验证",
+      "status": "active"
     },
     {
       "id": 84,
@@ -522,10 +678,15 @@
       "verify_event": "2026 年底刻蚀/薄膜国产化率行业数据（北方华创/中微/拓荆订单）",
       "result": "待验证",
       "result_note": "",
-      "source_tier": 3,
-      "observed_at": "2026-08-05",
-      "corroboration": 1,
-      "source_note": "行业数据估算"
+      "alpha_score": "中",
+      "backtest": {
+        "win_rate": 56.4,
+        "avg_return": 3.3,
+        "best_hold_days": 30,
+        "samples": 335
+      },
+      "suggestion": "观察跟踪，30天验证",
+      "status": "active"
     },
     {
       "id": 85,
@@ -539,10 +700,15 @@
       "verify_event": "北方华创/中微/拓荆 2026 业绩与订单（伯恩斯坦主线是否兑现）",
       "result": "待验证",
       "result_note": "",
-      "source_tier": 2,
-      "observed_at": "2026-08-05",
-      "corroboration": 1,
-      "source_note": "外资行研报（伯恩斯坦）"
+      "alpha_score": "中",
+      "backtest": {
+        "win_rate": 56.4,
+        "avg_return": 3.3,
+        "best_hold_days": 30,
+        "samples": 335
+      },
+      "suggestion": "观察跟踪，30天验证",
+      "status": "active"
     },
     {
       "id": 89,
@@ -556,39 +722,15 @@
       "verify_event": "2026 年底 CDMO 试剂/耗材市场规模与国产化率数据",
       "result": "待验证",
       "result_note": "",
-      "source_tier": 3,
-      "observed_at": "2026-08-05",
-      "corroboration": 1,
-      "source_note": "行业规模估算"
+      "alpha_score": "中",
+      "backtest": {
+        "win_rate": 52.0,
+        "avg_return": 0.23,
+        "best_hold_days": 7,
+        "samples": 358
+      },
+      "suggestion": "观察跟踪，7天验证",
+      "status": "active"
     }
-  ],
-  "summary": {
-    "total_signals": 33,
-    "red_count": 15,
-    "orange_count": 18,
-    "by_industry": {
-      "存储/半导体": 9,
-      "固态电池": 7,
-      "低空经济/eVTOL": 7,
-      "创新药": 10
-    }
-  },
-  "metadata": {
-    "source": "信号信息差强度评估_20260805.md",
-    "generated_at": "2026-08-11T12:48:00+08:00",
-    "filter": "仅保留🔴(高)和🟠(高)两级信号",
-    "version": "1.0",
-    "upgraded_at": "2026-08-12T10:20:00+08:00",
-    "upgrade_note": "新增 predicted_on/verify_by/verify_event/result/result_note 五字段（验证记录层）"
-  },
-  "track_record": {
-    "schema_version": "1.0",
-    "total_signals": 33,
-    "pending": 33,
-    "verified": 0,
-    "hit": 0,
-    "miss": 0,
-    "hit_rate": null,
-    "note": "验证记录资产层：每条信号从生成日起自带验证节点，验证后回填 result"
-  }
+  ]
 }
