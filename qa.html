@@ -314,13 +314,6 @@ function detectIndustry(question) {
   for (const [ind, kws] of Object.entries(INDUSTRY_KEYWORDS)) {
     let score = 0;
     for (const kw of kws["专属"]) {
-      if (kw.toLowerCase().includes(q) || q.includes(kw.toLowerCase())) score += 3;
-    }
-    for (const kw of kws["通用"]) {
-      if (q.includes(kw.toLowerCase())) score += 1;
-    }
-    // Reverse check: keyword in question
-    for (const kw of kws["专属"]) {
       if (q.includes(kw.toLowerCase())) score += 3;
     }
     for (const kw of kws["通用"]) {
