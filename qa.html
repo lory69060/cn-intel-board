@@ -6,6 +6,11 @@
 <title>China Supply Chain Q&A | 供应链信息差问答</title>
 <meta name="description" content="Ask about China's hard-tech supply chain. Get structured intelligence signals with information gaps, sources, and verification status.">
 <meta name="theme-color" content="#d33">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="SC Q&A">
+<link rel="icon" type="image/png" sizes="180x180" href="icons/icon-180.png">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
 <link rel="manifest" href="manifest.webmanifest">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -234,6 +239,139 @@
     box-shadow: 0 1px 4px rgba(0,0,0,0.08);
   }
 
+  /* ─── Install Banner ─── */
+  .install-banner {
+    background: linear-gradient(135deg, #fff8f8 0%, #fff 100%);
+    border: 1px solid #ffd5d5;
+    border-left: 4px solid #d33;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+    display: none;
+    position: relative;
+  }
+  .install-banner.show { display: block; }
+  .install-banner-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #bbb;
+    cursor: pointer;
+    line-height: 1;
+    padding: 4px;
+  }
+  .install-banner-close:hover { color: #888; }
+  .install-banner h3 {
+    font-size: 15px;
+    color: #1a1a1a;
+    margin-bottom: 6px;
+    padding-right: 28px;
+  }
+  .install-banner p {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  .install-btn-android {
+    background: #d33;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .install-btn-android:hover { background: #b22; }
+  .install-steps {
+    display: flex;
+    gap: 16px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+  .install-step {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: #555;
+  }
+  .step-num {
+    background: #d33;
+    color: #fff;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* ─── QR Mode ─── */
+  .qr-mode {
+    display: none;
+    text-align: center;
+  }
+  .qr-mode.show { display: block; }
+  .qr-mode h1 {
+    font-size: 24px;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+  }
+  .qr-mode .subtitle {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 24px;
+  }
+  #qr-code {
+    display: inline-block;
+    padding: 16px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 24px;
+  }
+  #qr-code canvas, #qr-code img { display: block; }
+  .qr-steps {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+  .qr-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    max-width: 120px;
+  }
+  .qr-step .step-num {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+  .qr-step span {
+    font-size: 12px;
+    color: #666;
+  }
+  .qr-nav {
+    margin-top: 24px;
+    font-size: 13px;
+  }
+  .qr-nav a {
+    color: #888;
+    text-decoration: none;
+  }
+  .qr-nav a:hover { text-decoration: underline; }
+
   @media (max-width: 480px) {
     body { padding: 12px; padding-bottom: 32px; }
     header { padding: 20px 16px; }
@@ -242,6 +380,7 @@
     #ask-btn { width: 100%; padding: 14px; }
     .card { padding: 14px; }
     .card-signal { font-size: 14px; }
+    .install-steps { flex-direction: column; gap: 8px; }
   }
 </style>
 </head>
@@ -249,38 +388,155 @@
 <div class="container">
   <nav class="nav-link"><a href="index.html">← China Supply Chain Intel Board</a></nav>
 
-  <header>
-    <h1>🔍 China Supply Chain Q&amp;A</h1>
-    <div class="subtitle">中国供应链信息差问答</div>
-    <div class="tagline">Ask a question → get structured intelligence signals with information gaps &amp; sources</div>
-  </header>
-
-  <div class="input-area">
-    <div class="input-row">
-      <input type="text" id="question-input" placeholder="Ask about supply chain signals… (e.g. 固态电池上游材料)" autocomplete="off">
-      <button id="ask-btn">Ask</button>
+  <!-- QR Mode -->
+  <div class="qr-mode" id="qr-mode">
+    <h1>📲 扫码使用 Q&A</h1>
+    <div class="subtitle">Scan to open on your phone · 用手机扫码打开</div>
+    <div id="qr-code"></div>
+    <div class="qr-steps">
+      <div class="qr-step">
+        <div class="step-num">1</div>
+        <span>Open camera / WeChat</span>
+      </div>
+      <div class="qr-step">
+        <div class="step-num">2</div>
+        <span>Tap the link</span>
+      </div>
+      <div class="qr-step">
+        <div class="step-num">3</div>
+        <span>Add to home screen</span>
+      </div>
     </div>
-    <div class="suggestions">
-      Try:
-      <span data-q="存储芯片 国产化率">存储芯片</span>
-      <span data-q="固态电池">固态电池</span>
-      <span data-q="eVTOL 电池 成本">eVTOL</span>
-      <span data-q="创新药 BD交易">创新药</span>
-      <span data-q="光刻胶 国产率">光刻胶</span>
-      <span data-q="中报 业绩">中报</span>
-    </div>
+    <div class="qr-nav"><a href="qa.html">← Back to Q&A</a></div>
   </div>
 
-  <div class="loading" id="loading">⏳ Searching signals…</div>
-  <div id="results"></div>
+  <!-- Normal Mode -->
+  <div id="normal-mode">
+    <header>
+      <h1>🔍 China Supply Chain Q&amp;A</h1>
+      <div class="subtitle">中国供应链信息差问答</div>
+      <div class="tagline">Ask a question → get structured intelligence signals with information gaps &amp; sources</div>
+    </header>
 
-  <footer>
-    Data from public filings &amp; industry reports · For research purposes only, not investment advice.<br>
-    <span style="font-size:11px;">算法复刻自 server.py handle_ask_edge — keyword-scoring with industry priority</span>
-  </footer>
+    <!-- Install Banner -->
+    <div class="install-banner" id="install-banner">
+      <button class="install-banner-close" id="install-close" title="Dismiss">×</button>
+      <h3 id="install-title">📲 Install to Home Screen</h3>
+      <p id="install-desc">Add this app for quick access. Works offline once installed.</p>
+      <div id="install-actions"></div>
+      <div class="install-steps" id="install-ios-steps" style="display:none;">
+        <div class="install-step"><div class="step-num">1</div><span>Tap Share button</span></div>
+        <div class="install-step"><div class="step-num">2</div><span>Scroll &amp; tap "Add to Home Screen"</span></div>
+        <div class="install-step"><div class="step-num">3</div><span>Tap "Add"</span></div>
+      </div>
+    </div>
+
+    <div class="input-area">
+      <div class="input-row">
+        <input type="text" id="question-input" placeholder="Ask about supply chain signals… (e.g. 固态电池上游材料)" autocomplete="off">
+        <button id="ask-btn">Ask</button>
+      </div>
+      <div class="suggestions">
+        Try:
+        <span data-q="存储芯片 国产化率">存储芯片</span>
+        <span data-q="固态电池">固态电池</span>
+        <span data-q="eVTOL 电池 成本">eVTOL</span>
+        <span data-q="创新药 BD交易">创新药</span>
+        <span data-q="光刻胶 国产率">光刻胶</span>
+        <span data-q="中报 业绩">中报</span>
+      </div>
+    </div>
+
+    <div class="loading" id="loading">⏳ Searching signals…</div>
+    <div id="results"></div>
+
+    <footer>
+      Data from public filings &amp; industry reports · For research purposes only, not investment advice.<br>
+      <span style="font-size:11px;">算法复刻自 server.py handle_ask_edge — keyword-scoring with industry priority</span>
+    </footer>
+  </div>
 </div>
 
+<script src="vendor/qrcode.min.js"></script>
 <script>
+// ─── QR Mode Init ────────────────────────────────────────────────────────────
+const params = new URLSearchParams(window.location.search);
+if (params.get("qr") === "1") {
+  document.getElementById("qr-mode").classList.add("show");
+  document.getElementById("normal-mode").style.display = "none";
+  const baseURL = window.location.origin + window.location.pathname;
+  new QRCode(document.getElementById("qr-code"), {
+    text: baseURL,
+    width: 220,
+    height: 220,
+    colorDark: "#1a1a1a",
+    colorLight: "#ffffff",
+    correctLevel: QRCode.CorrectLevel.M
+  });
+}
+
+// ─── PWA Install Banner ─────────────────────────────────────────────────────
+let deferredPrompt = null;
+
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  showInstallBanner("android");
+});
+
+function isIOS() {
+  return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+}
+
+function showInstallBanner(platform) {
+  const banner = document.getElementById("install-banner");
+  const title = document.getElementById("install-title");
+  const desc = document.getElementById("install-desc");
+  const actions = document.getElementById("install-actions");
+  const iosSteps = document.getElementById("install-ios-steps");
+
+  if (platform === "ios" || isIOS()) {
+    title.textContent = "📲 Install to Home Screen";
+    desc.textContent = "Tap the Share button in Safari, then scroll down and tap \"Add to Home Screen\".";
+    actions.innerHTML = "";
+    iosSteps.style.display = "flex";
+  } else {
+    title.textContent = "📲 Install App";
+    desc.textContent = "Install to your home screen for quick access. Works like a native app.";
+    iosSteps.style.display = "none";
+    actions.innerHTML = `<button class="install-btn-android" id="install-action-btn">Install</button>`;
+    document.getElementById("install-action-btn").addEventListener("click", () => {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === "accepted") {
+            console.log("User accepted the install prompt");
+          }
+          deferredPrompt = null;
+          localStorage.setItem("sc-install-prompt-dismissed", "1");
+          banner.classList.remove("show");
+        });
+      }
+    });
+  }
+
+  // Only show if not already dismissed
+  if (!localStorage.getItem("sc-install-prompt-dismissed")) {
+    banner.classList.add("show");
+  }
+}
+
+// Show iOS banner on load if applicable
+if (isIOS()) {
+  showInstallBanner("ios");
+}
+
+// Close button
+document.getElementById("install-close").addEventListener("click", () => {
+  document.getElementById("install-banner").classList.remove("show");
+  localStorage.setItem("sc-install-prompt-dismissed", "1");
+});
+
 // ─── Keyword scoring logic (replicates server.py handle_ask_edge) ────────────
 
 const INDUSTRY_KEYWORDS = {

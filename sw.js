@@ -4,7 +4,10 @@ const URLS_TO_CACHE = [
   "./qa.html",
   "./index.html",
   "./signal-board-structured.json",
-  "./manifest.webmanifest"
+  "./manifest.webmanifest",
+  "./icons/icon-180.png",
+  "./icons/icon-512.png",
+  "./vendor/qrcode.min.js"
 ];
 
 // Install: cache core assets

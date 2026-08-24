@@ -5,6 +5,9 @@
 # Main site homepage with JSON-LD structured data
 https://lory69060.github.io/cn-intel-board/
 
+# Q&A interface (PWA, installable)
+https://lory69060.github.io/cn-intel-board/qa.html - China supply chain Q&A: ask about hard-tech signals and get structured intelligence with information gaps
+
 # Data services & MCP endpoint (for agents & researchers)
 https://lory69060.github.io/cn-intel-board/data-services.html - MCP data service: China hard-tech supply-chain intel for AI agents (remote MCP endpoint, 6 tools, 33 verifiable signals)
 
