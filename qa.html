@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>China Supply Chain Q&A | 供应链信息差问答</title>
+<meta name="description" content="Ask about China's hard-tech supply chain. Get structured intelligence signals with information gaps, sources, and verification status.">
+<meta name="theme-color" content="#d33">
+<link rel="manifest" href="manifest.webmanifest">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+    padding: 16px;
+    padding-bottom: 40px;
+  }
+  .container { max-width: 720px; margin: 0 auto; }
+
+  /* Header */
+  header {
+    background: #fff;
+    padding: 24px 20px;
+    border-radius: 12px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+  }
+  header .subtitle {
+    font-size: 14px;
+    color: #888;
+  }
+  header .tagline {
+    font-size: 13px;
+    color: #aaa;
+    margin-top: 8px;
+  }
+
+  /* Input area */
+  .input-area {
+    background: #fff;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    margin-bottom: 16px;
+  }
+  .input-row {
+    display: flex;
+    gap: 10px;
+  }
+  #question-input {
+    flex: 1;
+    font-size: 16px;
+    padding: 14px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.2s;
+    font-family: inherit;
+  }
+  #question-input:focus { border-color: #d33; }
+  #ask-btn {
+    background: #d33;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 14px 24px;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+  #ask-btn:hover { background: #b22; }
+  #ask-btn:active { transform: scale(0.97); }
+  #ask-btn:disabled { background: #ccc; cursor: not-allowed; }
+
+  /* Suggestions */
+  .suggestions {
+    margin-top: 12px;
+    font-size: 13px;
+    color: #999;
+  }
+  .suggestions span {
+    display: inline-block;
+    background: #f0f0f0;
+    color: #666;
+    padding: 4px 10px;
+    border-radius: 12px;
+    margin: 3px 4px 3px 0;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .suggestions span:hover { background: #e0e0e0; }
+
+  /* Loading */
+  .loading {
+    text-align: center;
+    padding: 32px;
+    color: #aaa;
+    font-size: 14px;
+    display: none;
+  }
+  .loading.show { display: block; }
+
+  /* Results */
+  #results { display: flex; flex-direction: column; gap: 12px; }
+  .result-header {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 4px;
+    padding: 0 4px;
+  }
+  .no-results {
+    background: #fff;
+    padding: 24px;
+    border-radius: 12px;
+    text-align: center;
+    color: #888;
+    font-size: 14px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  }
+  .no-results .tips { margin-top: 12px; font-size: 13px; }
+  .no-results .tips span {
+    display: inline-block;
+    background: #f0f0f0;
+    color: #666;
+    padding: 4px 10px;
+    border-radius: 12px;
+    margin: 4px 4px 4px 0;
+    cursor: pointer;
+  }
+
+  /* Signal card */
+  .card {
+    background: #fff;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    border-left: 4px solid #d33;
+  }
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .card-id {
+    font-size: 12px;
+    color: #999;
+    font-weight: 500;
+  }
+  .card-industry {
+    font-size: 12px;
+    background: #fff0f0;
+    color: #d33;
+    padding: 2px 8px;
+    border-radius: 8px;
+    font-weight: 500;
+  }
+  .card-score {
+    font-size: 11px;
+    color: #bbb;
+    margin-left: auto;
+  }
+  .card-badge {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 500;
+  }
+  .badge-pending { background: #fff7e6; color: #d48806; }
+  .badge-hit { background: #f6ffed; color: #52c41a; }
+  .badge-miss { background: #fff2f0; color: #ff4d4f; }
+  .badge-delayed { background: #f0f0ff; color: #5959d4; }
+  .card-signal {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 6px;
+    line-height: 1.5;
+  }
+  .card-basis {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 10px;
+    font-style: italic;
+    padding-left: 10px;
+    border-left: 2px solid #eee;
+  }
+  .card-meta {
+    display: flex;
+    gap: 12px;
+    font-size: 12px;
+    color: #999;
+    flex-wrap: wrap;
+  }
+  .card-source {
+    font-size: 11px;
+    color: #bbb;
+    margin-top: 8px;
+  }
+
+  /* Nav link */
+  .nav-link {
+    text-align: center;
+    margin-bottom: 16px;
+    font-size: 13px;
+  }
+  .nav-link a {
+    color: #888;
+    text-decoration: none;
+  }
+  .nav-link a:hover { text-decoration: underline; }
+
+  /* Footer */
+  footer {
+    margin-top: 24px;
+    padding: 16px;
+    background: #fff;
+    border-radius: 12px;
+    font-size: 12px;
+    color: #aaa;
+    text-align: center;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  }
+
+  @media (max-width: 480px) {
+    body { padding: 12px; padding-bottom: 32px; }
+    header { padding: 20px 16px; }
+    header h1 { font-size: 20px; }
+    .input-row { flex-direction: column; }
+    #ask-btn { width: 100%; padding: 14px; }
+    .card { padding: 14px; }
+    .card-signal { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <nav class="nav-link"><a href="index.html">← China Supply Chain Intel Board</a></nav>
+
+  <header>
+    <h1>🔍 China Supply Chain Q&amp;A</h1>
+    <div class="subtitle">中国供应链信息差问答</div>
+    <div class="tagline">Ask a question → get structured intelligence signals with information gaps &amp; sources</div>
+  </header>
+
+  <div class="input-area">
+    <div class="input-row">
+      <input type="text" id="question-input" placeholder="Ask about supply chain signals… (e.g. 固态电池上游材料)" autocomplete="off">
+      <button id="ask-btn">Ask</button>
+    </div>
+    <div class="suggestions">
+      Try:
+      <span data-q="存储芯片 国产化率">存储芯片</span>
+      <span data-q="固态电池">固态电池</span>
+      <span data-q="eVTOL 电池 成本">eVTOL</span>
+      <span data-q="创新药 BD交易">创新药</span>
+      <span data-q="光刻胶 国产率">光刻胶</span>
+      <span data-q="中报 业绩">中报</span>
+    </div>
+  </div>
+
+  <div class="loading" id="loading">⏳ Searching signals…</div>
+  <div id="results"></div>
+
+  <footer>
+    Data from public filings &amp; industry reports · For research purposes only, not investment advice.<br>
+    <span style="font-size:11px;">算法复刻自 server.py handle_ask_edge — keyword-scoring with industry priority</span>
+  </footer>
+</div>
+
+<script>
+// ─── Keyword scoring logic (replicates server.py handle_ask_edge) ────────────
+
+const INDUSTRY_KEYWORDS = {
+  "存储/半导体": {
+    "专属": ["存储", "半导体", "芯片", "HBM", "DRAM", "光刻", "刻蚀", "封装", "CoWoS", "长鑫", "台积电", "北方华创", "中微", "拓荆", "零部件", "耗材", "光刻胶"],
+    "通用": ["材料", "国产率", "资本支出", "估值", "产能"]
+  },
+  "固态电池": {
+    "专属": ["固态电池", "硫化物", "硫化锂", "锂金属", "电解质", "隔膜", "电芯", "比亚迪", "国轩", "恩捷", "清陶", "负极"],
+    "通用": ["上游", "材料", "成本", "电池", "产能", "装车", "订单"]
+  },
+  "低空经济/eVTOL": {
+    "专属": ["低空", "eVTOL", "飞行汽车", "无人机", "航电", "亿航", "峰飞", "沃兰特", "御风", "适航"],
+    "通用": ["电池", "订单", "成本", "整机", "市场"]
+  },
+  "创新药": {
+    "专属": ["创新药", "医药", "康方", "恒瑞", "GLP", "替尔泊肽", "CDMO", "商保", "医保", "BD交易", "管线", "临床"],
+    "通用": ["交易", "出海", "支付", "目录"]
+  }
+};
+
+const STOPWORDS = new Set([
+  "什么","怎么","如何","有","是","的","了","吗","呢","谁","我们",
+  "哪些","一个","这个","那个","散户","市场","信息差","事情","方面",
+  "关于","相关","有什么","可以","告诉","介绍","一下","呢","吗","么"
+]);
+
+function detectIndustry(question) {
+  const q = question.toLowerCase();
+  let bestInd = null, bestScore = 0;
+  for (const [ind, kws] of Object.entries(INDUSTRY_KEYWORDS)) {
+    let score = 0;
+    for (const kw of kws["专属"]) {
+      if (kw.toLowerCase().includes(q) || q.includes(kw.toLowerCase())) score += 3;
+    }
+    for (const kw of kws["通用"]) {
+      if (q.includes(kw.toLowerCase())) score += 1;
+    }
+    // Reverse check: keyword in question
+    for (const kw of kws["专属"]) {
+      if (q.includes(kw.toLowerCase())) score += 3;
+    }
+    for (const kw of kws["通用"]) {
+      if (q.includes(kw.toLowerCase())) score += 1;
+    }
+    if (score > bestScore) { bestInd = ind; bestScore = score; }
+  }
+  return bestScore > 0 ? bestInd : null;
+}
+
+function scoreQuestion(question, signal, detected) {
+  const q = question.toLowerCase();
+  let score = 0;
+  const ind = signal.industry || "";
+  const text = ((signal.signal || "") + " " + (signal.basis || "")).toLowerCase();
+
+  // Industry priority
+  if (detected && ind === detected) {
+    score += 6;
+  } else if (detected) {
+    return 0;
+  }
+
+  // Content keyword match
+  const words = q.replace(/[？?：:]/g, " ").split(/\s+/).filter(w => w.length >= 2 && !STOPWORDS.has(w));
+  for (const w of words) {
+    if (text.includes(w)) score += 1;
+  }
+
+  return score;
+}
+
+function ask(question, signals, limit) {
+  const detected = detectIndustry(question);
+  const scored = signals.map(s => ({ signal: s, score: scoreQuestion(question, s, detected) }));
+  scored.sort((a, b) => b.score - a.score);
+  let top = scored.filter(x => x.score > 0).slice(0, limit);
+
+  if (top.length === 0) {
+    if (detected) {
+      top = signals.filter(s => s.industry === detected).slice(0, limit).map(s => ({ signal: s, score: 0 }));
+    } else {
+      top = signals.slice(0, limit).map(s => ({ signal: s, score: 0 }));
+    }
+  }
+
+  return { question, detected, signals: top.map(x => x.signal), total: top.length };
+}
+
+// ─── UI Logic ────────────────────────────────────────────────────────────────
+
+let signalsData = null;
+
+async function loadSignals() {
+  try {
+    const resp = await fetch("signal-board-structured.json");
+    const data = await resp.json();
+    signalsData = data.signals || [];
+  } catch (e) {
+    console.error("Failed to load signals:", e);
+    signalsData = [];
+  }
+}
+
+function getBadgeClass(result) {
+  if (!result || result === "待验证") return "badge-pending";
+  if (result === "已兑现" || result === "部分兑现") return "badge-hit";
+  if (result === "落空") return "badge-miss";
+  if (result === "推迟") return "badge-delayed";
+  return "badge-pending";
+}
+
+function getBadgeText(result) {
+  if (!result || result === "待验证") return "⏳ Pending";
+  if (result === "已兑现") return "✅ Hit";
+  if (result === "部分兑现") return "🔶 Partial";
+  if (result === "落空") return "❌ Miss";
+  if (result === "推迟") return "⏸ Delayed";
+  return result;
+}
+
+function renderResults(data) {
+  const container = document.getElementById("results");
+  container.innerHTML = "";
+
+  if (!signalsData || signalsData.length === 0) {
+    container.innerHTML = '<div class="no-results">No signals loaded. Please try again later.</div>';
+    return;
+  }
+
+  if (!data || data.signals.length === 0) {
+    container.innerHTML = `
+      <div class="no-results">
+        <div style="font-size:28px;margin-bottom:8px;">🔍</div>
+        <div>No matching signals found for "<strong>${escHtml(data.question)}</strong>"</div>
+        <div class="tips">
+          Try:
+          <span data-q="存储芯片">存储芯片</span>
+          <span data-q="固态电池">固态电池</span>
+          <span data-q="eVTOL">eVTOL</span>
+          <span data-q="创新药">创新药</span>
+          <span data-q="光刻胶">光刻胶</span>
+          <span data-q="中报">中报</span>
+        </div>
+      </div>`;
+    return;
+  }
+
+  const indLabel = data.detected ? `<div class="result-header">Detected industry: <strong>${escHtml(data.detected)}</strong> · ${data.total} signal${data.total > 1 ? "s" : ""} matched</div>` : `<div class="result-header">${data.total} signals matched</div>`;
+  container.innerHTML = indLabel;
+
+  for (const sig of data.signals) {
+    const tierStars = "★".repeat(sig.source_tier || 1) + "☆".repeat(3 - (sig.source_tier || 1));
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <div class="card-header">
+        <span class="card-id">#${sig.id}</span>
+        <span class="card-industry">${escHtml(sig.industry || "")}</span>
+        <span class="card-tier" title="Source tier: ${sig.source_tier || 1}/3">Tier ${tierStars}</span>
+        <span class="card-badge ${getBadgeClass(sig.result)}">${getBadgeText(sig.result)}</span>
+        <span class="card-score">strength: ${escHtml(sig.strength || "")}</span>
+      </div>
+      <div class="card-signal">${escHtml(sig.signal || "")}</div>
+      <div class="card-basis">${escHtml(sig.basis || "")}</div>
+      <div class="card-meta">
+        ${sig.predicted_on ? `<span>📅 Predicted: ${escHtml(sig.predicted_on)}</span>` : ""}
+        ${sig.verify_by ? `<span>⏰ Verify by: ${escHtml(sig.verify_by)}</span>` : ""}
+      </div>
+      ${sig.verify_event ? `<div style="font-size:13px;color:#555;margin-top:6px;padding:6px 10px;background:#fafafa;border-radius:4px;"><strong>Verify event:</strong> ${escHtml(sig.verify_event)}</div>` : ""}
+      ${sig.source_note ? `<div class="card-source">📎 ${escHtml(sig.source_note)}</div>` : ""}
+    `;
+    container.appendChild(card);
+  }
+}
+
+function escHtml(str) {
+  return String(str).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+
+function doAsk() {
+  const input = document.getElementById("question-input");
+  const q = input.value.trim();
+  if (!q) { input.focus(); return; }
+
+  const loading = document.getElementById("loading");
+  const results = document.getElementById("results");
+  results.innerHTML = "";
+  loading.classList.add("show");
+  document.getElementById("ask-btn").disabled = true;
+
+  // Small delay for UX feel
+  setTimeout(() => {
+    if (!signalsData) {
+      loading.classList.remove("show");
+      results.innerHTML = '<div class="no-results">⚠️ Signals data not loaded. <a href="index.html">← Back</a></div>';
+      document.getElementById("ask-btn").disabled = false;
+      return;
+    }
+    const data = ask(q, signalsData, 5);
+    loading.classList.remove("show");
+    renderResults(data);
+    document.getElementById("ask-btn").disabled = false;
+  }, 300);
+}
+
+// ─── Init ────────────────────────────────────────────────────────────────────
+document.getElementById("ask-btn").addEventListener("click", doAsk);
+document.getElementById("question-input").addEventListener("keydown", e => {
+  if (e.key === "Enter") doAsk();
+});
+document.querySelectorAll(".suggestions span, .no-results .tips span").forEach(span => {
+  span.addEventListener("click", () => {
+    document.getElementById("question-input").value = span.dataset.q;
+    doAsk();
+  });
+});
+
+loadSignals().then(() => {
+  console.log(`Loaded ${signalsData ? signalsData.length : 0} signals`);
+});
+
+// ─── Service Worker Registration ─────────────────────────────────────────────
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("sw.js").catch(err => console.log("SW register failed:", err));
+}
+</script>
+</body>
+</html>
