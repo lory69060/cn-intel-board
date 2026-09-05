@@ -122,3 +122,33 @@ AI训练抢产能 → 存储芯片涨价 → 中国存储企业受益。
 🟢 **2026Q4** - 全球AI税监管讨论开始，权力重构开始
 
 #AI税# #消费电子# #财富分配#
+
+<!-- JSON-LD structured -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "苹果涨3500元：AI时代的消费升级",
+  "datePublished": "2026-07-12",
+  "author": {"@type": "Person", "name": "Tom"},
+  "mainEntity": {
+    "@type": "Question",
+    "name": "苹果MacBook Air涨价3500元是否与AI训练抢存储产能有关？",
+    "acceptedAnswer": {"@type": "Answer", "text": "是的，文章指出AI训练疯狂抢购HBM导致存储芯片产能被挤占，传导至消费电子采购成本上升，最终由消费者买单形成\"AI税\"。核心证据：存储芯片价格过去4年涨700%（DRAMeXchange数据），AI训练需求过去2年增长1200%；苹果MacBook Air涨价3500元、联想ThinkPad涨价500-1500元。"}
+  },
+  "assumption": [
+    "AI税是新的数字地租，是AI时代的封建制度",
+    "所有公司都说供应链成本上涨却无人提AI需求是因为怕影响股价",
+    "苹果涨价带动供应商立讯精密/歌尔股份/蓝思科技业绩弹性释放"
+  ],
+  "evidence_source": [
+    {"name": "DRAMeXchange", "type": "行业数据", "claim": "存储芯片价格过去4年涨700%"},
+    {"name": "行业报告估算", "type": "行业报告", "claim": "AI训练需求过去2年增长1200%"},
+    {"name": "供应链从业者访谈", "type": "访谈", "claim": "我们被迫涨价，因为AI训练抢走了我们的产能"},
+    {"name": "苹果官方", "type": "公司公告", "claim": "MacBook Air涨价3500元，理由是供应链成本上涨"},
+    {"name": "联想官方", "type": "公司公告", "claim": "ThinkPad涨价500-1500元"}
+  ],
+  "update_log": [{"date": "2026-07-12", "note": "初稿"}],
+  "confidence_score": 0.75
+}
+</script>

@@ -240,3 +240,35 @@ A股游戏公司的AI渗透率远高于玩家感知，但股价还没反映这�
 🟢 **完美世界** — AI辅助动画、特效、测试，动画周期降50%，毛利率提升2-4%
 
 #游戏 #AI #A股 #三七互娱 #昆仑万维 #完美世界
+
+<!-- JSON-LD structured -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "大厂在砍传统工作室，A股游戏公司在悄悄用AI降本——一个被忽略的定价错位",
+  "datePublished": "2026-08-24",
+  "author": {"@type": "Person", "name": "Tom"},
+  "mainEntity": {
+    "@type": "Question",
+    "name": "Why are A-share game companies quietly benefiting from AI cost reduction while the market focuses on AI application hype?",
+    "acceptedAnswer": {"@type": "Answer", "text": "90% of game developers use AI, but AI feature penetration rate for players is only 5%. The real winners are listed companies using AI for cost reduction, not AI application hype. Unity 2026 report shows 62% developers use AI-assisted coding, development time dropped from 91 hours to 21 hours (-77%). A-share game companies like 三七互娱 (PE 25x vs industry avg 30x), 昆仑万维 (PE 18x vs internet avg 25x), and 完美世界 (PE 20x vs industry avg 30x) have high AI penetration in development but stock prices haven't reflected the margin improvement."}
+  },
+  "assumption": [
+    "A股游戏公司的AI渗透率远高于玩家感知，但股价尚未反映利润率改善",
+    "AI降本的边际效应递减，利润率改善是渐进而非爆发式的",
+    "投资者在等AI应用落地，真正的机会是AI降本增效"
+  ],
+  "evidence_source": [
+    {"name": "Google Cloud disclosure", "type": "Industry Data", "claim": "Global top 10 game developers: 9 use AI"},
+    {"name": "Unity 2026 Game Development Report", "type": "Industry Report", "claim": "62% of developers use AI-assisted coding, development time from 91 hours to 21 hours, -77%"},
+    {"name": "2026 H1 game industry investment data", "type": "Industry Data", "claim": "50 investment cases in H1 2026, half of companies founded less than 2 years"},
+    {"name": "Steam 2026 data", "type": "Platform Data", "claim": "AI-generated content games: <1% of new releases; AI-assisted development labeled: <5%"},
+    {"name": "三七互娱 financials", "type": "Company Data", "claim": "Current PE ~25x, 2024 game company average PE ~30x; gross margin improvement 3-5%"},
+    {"name": "昆仑万维 financials", "type": "Company Data", "claim": "Current PE ~18x, 2024 internet company average PE ~25x; UGC cost down 40%, gross margin improvement 5-8%"},
+    {"name": "完美世界 financials", "type": "Company Data", "claim": "Current PE ~20x, 2024 game company average PE ~30x; animation cycle from 2 weeks to 1 week, gross margin improvement 2-4%"}
+  ],
+  "update_log": [{"date": "2026-08-24", "note": "Initial draft"}],
+  "confidence_score": 0.7
+}
+</script>
