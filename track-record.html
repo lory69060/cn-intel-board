@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>信号验证记录</title>
+<title>信号验证记录 | cn-intel-board</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -13,10 +13,7 @@
     line-height: 1.6;
     padding: 20px;
   }
-  .container {
-    max-width: 900px;
-    margin: 0 auto;
-  }
+  .container { max-width: 900px; margin: 0 auto; }
   header {
     background: #fff;
     padding: 24px;
@@ -24,910 +21,826 @@
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     margin-bottom: 20px;
   }
-  h1 {
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 8px;
-    color: #1a1a1a;
-  }
-  .disclaimer {
-    font-size: 13px;
-    color: #888;
-    margin-top: 12px;
-    padding-top: 12px;
-    border-top: 1px solid #eee;
-  }
-  .update-time {
-    font-size: 12px;
-    color: #aaa;
-    margin-top: 6px;
-  }
-  
-  /* 仪表盘 */
-  .dashboard {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 12px;
-    margin-bottom: 20px;
-  }
-  .stat-card {
-    background: #fff;
-    padding: 16px;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  }
-  .stat-num {
-    font-size: 28px;
-    font-weight: 700;
-    color: #1a1a1a;
-  }
-  .stat-label {
-    font-size: 12px;
-    color: #888;
-    margin-top: 4px;
-  }
+  h1 { font-size: 24px; font-weight: 600; margin-bottom: 8px; color: #1a1a1a; }
+  .disclaimer { font-size: 13px; color: #888; margin-top: 12px; padding-top: 12px; border-top: 1px solid #eee; }
+  .update-time { font-size: 12px; color: #aaa; margin-top: 6px; }
+  .dashboard { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 20px; }
+  .stat-card { background: #fff; padding: 16px; border-radius: 8px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+  .stat-num { font-size: 28px; font-weight: 700; color: #1a1a1a; }
+  .stat-label { font-size: 12px; color: #888; margin-top: 4px; }
   .stat-card.hit .stat-num { color: #52c41a; }
   .stat-card.miss .stat-num { color: #ff4d4f; }
   .stat-card.pending .stat-num { color: #faad14; }
-  
-  /* 卡片列表 */
-  .signal-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .card {
-    background: #fff;
-    padding: 16px;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  }
-  .card-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 8px;
-  }
-  .card-id {
-    font-size: 12px;
-    color: #999;
-    font-weight: 500;
-  }
-  .card-tier {
-    font-size: 12px;
-    color: #faad14;
-    letter-spacing: 1px;
-  }
-  .badge {
-    font-size: 11px;
-    padding: 2px 8px;
-    border-radius: 10px;
-    font-weight: 500;
-    margin-left: auto;
-  }
-  .badge-pending {
-    background: #fff7e6;
-    color: #d48806;
-  }
-  .badge-hit {
-    background: #f6ffed;
-    color: #52c41a;
-  }
-  .badge-miss {
-    background: #fff2f0;
-    color: #ff4d4f;
-  }
-  .card-title {
-    font-size: 14px;
-    font-weight: 600;
-    color: #1a1a1a;
-    margin-bottom: 4px;
-  }
-  .card-signal {
-    font-size: 15px;
-    color: #333;
-    margin-bottom: 6px;
-  }
-  .card-basis {
-    font-size: 13px;
-    color: #666;
-    margin-bottom: 8px;
-    font-style: italic;
-  }
-  .card-meta {
-    display: flex;
-    gap: 16px;
-    font-size: 12px;
-    color: #888;
-    margin-bottom: 8px;
-  }
-  .card-event {
-    font-size: 13px;
-    color: #555;
-    padding: 8px;
-    background: #fafafa;
-    border-radius: 4px;
-    margin-bottom: 8px;
-  }
-  .card-result {
-    font-size: 13px;
-    color: #333;
-    margin-bottom: 6px;
-  }
-  .card-note {
-    font-size: 12px;
-    color: #888;
-    margin-bottom: 6px;
-  }
-  .card-source {
-    font-size: 11px;
-    color: #bbb;
-  }
-  
-  /* 底部注释 */
-  footer {
-    margin-top: 24px;
-    padding: 16px;
-    background: #fff;
-    border-radius: 8px;
-    font-size: 12px;
-    color: #888;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  }
-  footer h3 {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 8px;
-  }
-  footer ul {
-    padding-left: 18px;
-  }
-  footer li {
-    margin-bottom: 4px;
-  }
-  
-  @media (max-width: 600px) {
-    .dashboard { grid-template-columns: repeat(3, 1fr); }
-  }
+  .signal-list { display: flex; flex-direction: column; gap: 12px; }
+  .card { background: #fff; padding: 16px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+  .card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .card-id { font-size: 12px; color: #999; font-weight: 500; }
+  .card-tier { font-size: 12px; color: #faad14; letter-spacing: 1px; }
+  .badge { font-size: 11px; padding: 2px 8px; border-radius: 10px; font-weight: 500; margin-left: auto; }
+  .badge-pending { background: #fff7e6; color: #d48806; }
+  .badge-hit { background: #f6ffed; color: #52c41a; }
+  .badge-miss { background: #fff2f0; color: #ff4d4f; }
+  .card-title { font-size: 14px; font-weight: 600; color: #1a1a1a; margin-bottom: 4px; }
+  .card-signal { font-size: 15px; color: #333; margin-bottom: 6px; }
+  .card-basis { font-size: 13px; color: #666; margin-bottom: 8px; font-style: italic; }
+  .card-meta { display: flex; gap: 16px; font-size: 12px; color: #888; margin-bottom: 8px; }
+  .card-event { font-size: 13px; color: #555; padding: 8px; background: #fafafa; border-radius: 4px; margin-bottom: 8px; }
+  .card-result { font-size: 13px; color: #333; margin-bottom: 6px; white-space: pre-line; }
+  .card-source { font-size: 11px; color: #bbb; }
+  footer { margin-top: 24px; padding: 16px; background: #fff; border-radius: 8px; font-size: 12px; color: #888; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+  footer h3 { font-size: 14px; color: #666; margin-bottom: 8px; }
+  footer ul { padding-left: 18px; }
+  footer li { margin-bottom: 4px; }
+  @media (max-width: 600px) { .dashboard { grid-template-columns: repeat(3, 1fr); } }
 </style>
 </head>
 <body>
 <div class="container">
   <header>
     <h1>信号验证记录</h1>
-    <div class="update-time">最后更新：2026-08-21 22:41</div>
+    <div class="update-time">最后更新：2026-10-12 12:39（本页由 signal-board-structured.json 自动生成）</div>
     <div class="disclaimer">
-      仅供研究参考，不构成投资建议。验证结果基于公开信息回填，可能存在滞后或偏差。
+      仅供研究参考，不构成投资建议。每条信号在 predicted_on 预注册、verify_by 到期公开核验回填，结果可证伪、可复核。
     </div>
   </header>
-  
+
   <div class="dashboard">
-    <div class="stat-card">
-      <div class="stat-num">33</div>
-      <div class="stat-label">已验证条数</div>
-    </div>
-    <div class="stat-card hit">
-      <div class="stat-num">0</div>
-      <div class="stat-label">命中条数</div>
-    </div>
-    <div class="stat-card miss">
-      <div class="stat-num">0</div>
-      <div class="stat-label">未命中条数</div>
-    </div>
-    <div class="stat-card pending">
-      <div class="stat-num">True</div>
-      <div class="stat-label">待验证条数</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num">0</div>
-      <div class="stat-label">已验证条数</div>
-    </div>
+    <div class="stat-card"><div class="stat-num">45</div><div class="stat-label">信号总数</div></div>
+    <div class="stat-card hit"><div class="stat-num">1</div><div class="stat-label">命中/兑现</div></div>
+    <div class="stat-card miss"><div class="stat-num">0</div><div class="stat-label">落空</div></div>
+    <div class="stat-card pending"><div class="stat-num">44</div><div class="stat-label">待验证/推迟</div></div>
+    <div class="stat-card"><div class="stat-num">100%</div><div class="stat-label">命中率</div></div>
   </div>
-  
+
   <div class="signal-list">
-    
-        <div class="card">
-          <div class="card-header">
-            <span class="card-id">#54</span>
-            <span class="card-tier" title="数据源层级">★☆☆</span>
-            <span class="badge badge-pending">⏳ 待验证</span>
-          </div>
-          <div class="card-title">固态电池</div>
-          <div class="card-signal">比亚迪硫化物全固态2026Q3重庆20GWh，成本70美元/kWh</div>
-          <div class="card-basis">成本平价数字无人验证</div>
-          <div class="card-meta">
-            <span>预测日：2026-08-05</span>
-            <span>验证截止：2026-09-30</span>
-          </div>
-          <div class="card-event">
-            <strong>验证事件：</strong>比亚迪硫化物全固态 2026Q3 重庆 20GWh 产线落地进展公告
-          </div>
-          
-          
-          <div class="card-source">比亚迪官方发布会/公告</div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <span class="card-id">#46</span>
-            <span class="card-tier" title="数据源层级">★☆☆</span>
-            <span class="badge badge-pending">⏳ 待验证</span>
-          </div>
-          <div class="card-title">存储/半导体</div>
-          <div class="card-signal">长鑫2026Q1净利247.62亿/毛利65%/份额7.67%</div>
-          <div class="card-basis">数据在招股书深处，散户只知存储涨价</div>
-          <div class="card-meta">
-            <span>预测日：2026-08-05</span>
-            <span>验证截止：2026-12-31</span>
-          </div>
-          <div class="card-event">
-            <strong>验证事件：</strong>长鑫正式披露招股书财务数据或上市后首份财报，核对净利/毛利/份额
-          </div>
-          
-          
-          <div class="card-source">招股书=官方一手文件</div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <span class="card-id">#63</span>
-            <span class="card-tier" title="数据源层级">★★★</span>
-            <span class="badge badge-pending">⏳ 待验证</span>
-          </div>
-          <div class="card-title">存储/半导体</div>
-          <div class="card-signal">长鑫HBM3已送样（非PPT）</div>
-          <div class="card-basis">送样细节无公开报道，市场仍按缺位定价</div>
-          <div class="card-meta">
-            <span>预测日：2026-08-05</span>
-            <span>验证截止：2026-12-31</span>
-          </div>
-          <div class="card-event">
-            <strong>验证事件：</strong>长鑫 HBM3 送样获得客户/供应链公开佐证（报道/公告）
-          </div>
-          
-          
-          <div class="card-source">送样细节无公开报道，供应链传闻</div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <span class="card-id">#52</span>
-            <span class="card-tier" title="数据源层级">★★★</span>
-            <span class="badge badge-pending">⏳ 待验证</span>
-          </div>
-          <div class="card-title">存储/半导体</div>
-          <div class="card-signal">HBM差2-3代是卡脖子，DRAM快≠HBM快</div>
-          <div class="card-basis">市场把DRAM国产化当全部</div>
-          <div class="card-meta">
-            <span>预测日：2026-08-05</span>
-            <span>验证截止：2026-12-31</span>
-          </div>
-          <div class="card-event">
-            <strong>验证事件：</strong>2026H2 HBM 国产化进展（HBM2E/3 量产节点）公开信息
-          </div>
-          
-          
-          <div class="card-source">行业分析</div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <span class="card-id">#71</span>
-            <span class="card-tier" title="数据源层级">★★★</span>
-            <span class="badge badge-pending">⏳ 待验证</span>
-          </div>
-          <div class="card-title">存储/半导体</div>
-          <div class="card-signal">光刻胶三短板 KrF 5%/ArF<2%/EUV 0%</div>
-          <div class="card-basis">国产替代叙事聚焦设备，材料被忽略</div>
-          <div class="card-meta">
-            <span>预测日：2026-08-05</span>
-            <span>验证截止：2026-12-31</span>
-          </div>
-          <div class="card-event">
-            <strong>验证事件：</strong>2026 年底光刻胶国产化率数据（KrF/ArF/EUV 各档位）
-          </div>
-          
-          
-          <div class="card-source">行业数据估算</div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <span class="card-id">#86</span>
-            <span class="card-tier" title="数据源层级">★★★</span>
-            <span class="badge badge-pending">⏳ 待验证</span>
-          </div>
-          <div class="card-title">存储/半导体</div>
-          <div class="card-signal">半导体零部件/耗材国产率<10%</div>
-          <div class="card-basis">认证周期18-36月，缝隙机会无人拼装</div>
-          <div class="card-meta">
-            <span>预测日：2026-08-05</span>
-            <span>验证截止：2026-12-31</span>
-          </div>
-          <div class="card-event">
-            <strong>验证事件：</strong>2026 年底半导体零部件/耗材国产化率行业数据
-          </div>
-          
-          
-          <div class="card-source">行业数据估算</div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <span class="card-id">#65</span>
-            <span class="card-tier" title="数据源层级">★★★</span>
-            <span class="badge badge-pending">⏳ 待验证</span>
-          </div>
-          <div class="card-title">低空经济/eVTOL</div>
-          <div class="card-signal">eVTOL电池成本=车规3-5倍，适航是壁垒</div>
-          <div class="card-basis">成本数字分散，无人算过电池价值量</div>
-          <div class="card-meta">
-            <span>预测日：2026-08-05</span>
-            <span>验证截止：2026-12-31</span>
-          </div>
-          <div class="card-event">
-            <strong>验证事件：</strong>eVTOL 电池成本公开数据（是否车规 3-5 倍、适航壁垒是否确认）
-          </div>
-          
-          
-          <div class="card-source">成本测算</div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <span class="card-id">#53</span>
-            <span class="card-tier" title="数据源层级">★★★</span>
-            <span class="badge badge-pending">⏳ 待验证</span>
-          </div>
-          <div class="card-title">固态电池</div>
-          <div class="card-signal">固态电池供给优先级 eVTOL>EV>储能</div>
-          <div class="card-basis">市场共识电池过剩，实际是结构性紧缺</div>
-          <div class="card-meta">
-            <span>预测日：2026-08-05</span>
-            <span>验证截止：2026-12-31</span>
-          </div>
-          <div class="card-event">
-            <strong>验证事件：</strong>2026H2 固态电池装车/订单供给分布（eVTOL vs EV vs 储能）
-          </div>
-          
-          
-          <div class="card-source">行业分析</div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <span class="card-id">#79</span>
-            <span class="card-tier" title="数据源层级">★★★</span>
-            <span class="badge badge-pending">⏳ 待验证</span>
-          </div>
-          <div class="card-title">固态电池</div>
-          <div class="card-signal">固态电池成本降35%+的成本曲线</div>
-          <div class="card-basis">成本曲线只存在于研报，散户无框架</div>
-          <div class="card-meta">
-            <span>预测日：2026-08-05</span>
-            <span>验证截止：2026-12-31</span>
-          </div>
-          <div class="card-event">
-            <strong>验证事件：</strong>2026 年底固态电池成本公开数据（是否降 35%+）
-          </div>
-          
-          
-          <div class="card-source">研报成本曲线</div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <span class="card-id">#69</span>
-            <span class="card-tier" title="数据源层级">★★☆</span>
-            <span class="badge badge-pending">⏳ 待验证</span>
-          </div>
-          <div class="card-title">创新药</div>
-          <div class="card-signal">康方HARMONi-2 III期2024年9月已阳</div>
-          <div class="card-basis">纠正性信息差：市场/媒体仍写II期2026年底</div>
-          <div class="card-meta">
-            <span>预测日：2026-08-05</span>
-            <span>验证截止：2026-12-31</span>
-          </div>
-          <div class="card-event">
-            <strong>验证事件：</strong>康方 HARMONi-2 III 期数据正式读出/发表（市场认知纠正）
-          </div>
-          
-          
-          <div class="card-source">临床试验公开数据，待正式读出</div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <span class="card-id">#56</span>
-            <span class="card-tier" title="数据源层级">★★☆</span>
-            <span class="badge badge-pending">⏳ 待验证</span>
-          </div>
-          <div class="card-title">创新药</div>
-          <div class="card-signal">HARMONi-7 II期2026年底读出=150亿交易关键节点</div>
-          <div class="card-basis">时间窗明确，市场犹豫未定价</div>
-          <div class="card-meta">
-            <span>预测日：2026-08-05</span>
-            <span>验证截止：2026-12-31</span>
-          </div>
-          <div class="card-event">
-            <strong>验证事件：</strong>HARMONi-7 II 期 2026 年底读出（150 亿交易关键节点）
-          </div>
-          
-          
-          <div class="card-source">临床试验公开时间节点</div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <span class="card-id">#75</span>
-            <span class="card-tier" title="数据源层级">★★★</span>
-            <span class="badge badge-pending">⏳ 待验证</span>
-          </div>
-          <div class="card-title">创新药</div>
-          <div class="card-signal">恒瑞13管线打包BMS + Co-Co框架</div>
-          <div class="card-basis">新模式未被理解，市场仍按自主出海叙事</div>
-          <div class="card-meta">
-            <span>预测日：2026-08-05</span>
-            <span>验证截止：2026-12-31</span>
-          </div>
-          <div class="card-event">
-            <strong>验证事件：</strong>恒瑞-BMS 13 管线打包交易正式官宣/交割
-          </div>
-          
-          
-          <div class="card-source">市场消息，交易未官宣</div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <span class="card-id">#80</span>
-            <span class="card-tier" title="数据源层级">★★☆</span>
-            <span class="badge badge-pending">⏳ 待验证</span>
-          </div>
-          <div class="card-title">低空经济/eVTOL</div>
-          <div class="card-signal">阿联酋10亿美元采购350架E20（单价286万美元）</div>
-          <div class="card-basis">海外订单细节冷门，eVTOL还在取证共识未破</div>
-          <div class="card-meta">
-            <span>预测日：2026-08-05</span>
-            <span>验证截止：2026-12-31</span>
-          </div>
-          <div class="card-event">
-            <strong>验证事件：</strong>阿联酋 350 架 E20 采购订单正式落地（签约/交付）公告
-          </div>
-          
-          
-          <div class="card-source">海外媒体报道，正式落地待验证</div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <span class="card-id">#90</span>
-            <span class="card-tier" title="数据源层级">★★★</span>
-            <span class="badge badge-pending">⏳ 待验证</span>
-          </div>
-          <div class="card-title">低空经济/eVTOL</div>
-          <div class="card-signal">eVTOL航电系统50亿市场/国产率<30%</div>
-          <div class="card-basis">整机叙事遮蔽航电缝隙</div>
-          <div class="card-meta">
-            <span>预测日：2026-08-05</span>
-            <span>验证截止：2026-12-31</span>
-          </div>
-          <div class="card-event">
-            <strong>验证事件：</strong>2026 年底 eVTOL 航电系统市场/国产化率数据
-          </div>
-          
-          
-          <div class="card-source">行业估算</div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <span class="card-id">#51</span>
-            <span class="card-tier" title="数据源层级">★★★</span>
-            <span class="badge badge-pending">⏳ 待验证</span>
-          </div>
-          <div class="card-title">存储/半导体</div>
-          <div class="card-signal">CoWoS=战略资源，封装估值重构</div>
-          <div class="card-basis">封装是末端旧框架未破</div>
-          <div class="card-meta">
-            <span>预测日：2026-08-05</span>
-            <span>验证截止：2026-12-31</span>
-          </div>
-          <div class="card-event">
-            <strong>验证事件：</strong>2026H2 封装/先进封装板块估值重构是否发生（板块相对收益）
-          </div>
-          
-          
-          <div class="card-source">市场分析</div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <span class="card-id">#55</span>
-            <span class="card-tier" title="数据源层级">★★☆</span>
-            <span class="badge badge-pending">⏳ 待验证</span>
-          </div>
-          <div class="card-title">创新药</div>
-          <div class="card-signal">康方AK112头对头击败K药</div>
-          <div class="card-basis">事实已出但散户认知滞后</div>
-          <div class="card-meta">
-            <span>预测日：2026-08-05</span>
-            <span>验证截止：2026-12-31</span>
-          </div>
-          <div class="card-event">
-            <strong>验证事件：</strong>康方 AK112 头对头数据公开/监管进展
-          </div>
-          
-          
-          <div class="card-source">头对头临床数据已公开</div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <span class="card-id">#57</span>
-            <span class="card-tier" title="数据源层级">★★☆</span>
-            <span class="badge badge-pending">⏳ 待验证</span>
-          </div>
-          <div class="card-title">创新药</div>
-          <div class="card-signal">2026H1中国占全球Top10 BD交易8席</div>
-          <div class="card-basis">只当个案，不知已成群体现象</div>
-          <div class="card-meta">
-            <span>预测日：2026-08-05</span>
-            <span>验证截止：2026-12-31</span>
-          </div>
-          <div class="card-event">
-            <strong>验证事件：</strong>2026 全年中国 BD 交易占全球 Top10 席位复盘
-          </div>
-          
-          
-          <div class="card-source">行业统计（BD交易盘点）</div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <span class="card-id">#64</span>
-            <span class="card-tier" title="数据源层级">★★☆</span>
-            <span class="badge badge-pending">⏳ 待验证</span>
-          </div>
-          <div class="card-title">低空经济/eVTOL</div>
-          <div class="card-signal">宁德战略投资峰飞航空</div>
-          <div class="card-basis">巨头入局信号未被解读</div>
-          <div class="card-meta">
-            <span>预测日：2026-08-05</span>
-            <span>验证截止：2026-12-31</span>
-          </div>
-          <div class="card-event">
-            <strong>验证事件：</strong>宁德-峰飞战略合作实质进展（投资交割/合作公告）
-          </div>
-          
-          
-          <div class="card-source">媒体广泛报道，交割待确认</div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <span class="card-id">#72</span>
-            <span class="card-tier" title="数据源层级">★☆☆</span>
-            <span class="badge badge-pending">⏳ 待验证</span>
-          </div>
-          <div class="card-title">固态电池</div>
-          <div class="card-signal">国轩固态电解质2000吨/年+硫化锂300吨</div>
-          <div class="card-basis">产能数字只有公告，无拼装</div>
-          <div class="card-meta">
-            <span>预测日：2026-08-05</span>
-            <span>验证截止：2026-12-31</span>
-          </div>
-          <div class="card-event">
-            <strong>验证事件：</strong>国轩固态电解质 2000 吨/年产线投产公告/产能爬坡
-          </div>
-          
-          
-          <div class="card-source">国轩官方公告产能数字</div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <span class="card-id">#76</span>
-            <span class="card-tier" title="数据源层级">★★☆</span>
-            <span class="badge badge-pending">⏳ 待验证</span>
-          </div>
-          <div class="card-title">低空经济/eVTOL</div>
-          <div class="card-signal">亿航2024.11全球首次eVTOL固态电池飞行</div>
-          <div class="card-basis">里程碑事件被淹没</div>
-          <div class="card-meta">
-            <span>预测日：2026-08-05</span>
-            <span>验证截止：2026-12-31</span>
-          </div>
-          <div class="card-event">
-            <strong>验证事件：</strong>亿航固态电池飞行里程碑被行业引用/后续装车进展
-          </div>
-          
-          
-          <div class="card-source">公司里程碑事件+媒体报道</div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <span class="card-id">#77</span>
-            <span class="card-tier" title="数据源层级">★☆☆</span>
-            <span class="badge badge-pending">⏳ 待验证</span>
-          </div>
-          <div class="card-title">低空经济/eVTOL</div>
-          <div class="card-signal">国轩已签无人机固态电芯订单（EC01）</div>
-          <div class="card-basis">订单落地证明从规划到订单</div>
-          <div class="card-meta">
-            <span>预测日：2026-08-05</span>
-            <span>验证截止：2026-12-31</span>
-          </div>
-          <div class="card-event">
-            <strong>验证事件：</strong>国轩无人机固态电芯订单 EC01 交付/放量公告
-          </div>
-          
-          
-          <div class="card-source">国轩订单公告</div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <span class="card-id">#78</span>
-            <span class="card-tier" title="数据源层级">★☆☆</span>
-            <span class="badge badge-pending">⏳ 待验证</span>
-          </div>
-          <div class="card-title">固态电池</div>
-          <div class="card-signal">恩捷固态隔膜2026中试线+宁德定点</div>
-          <div class="card-basis">隔膜龙头转型固态，无人跟踪</div>
-          <div class="card-meta">
-            <span>预测日：2026-08-05</span>
-            <span>验证截止：2026-12-31</span>
-          </div>
-          <div class="card-event">
-            <strong>验证事件：</strong>恩捷固态隔膜 2026 中试线投产公告 + 宁德定点进展
-          </div>
-          
-          
-          <div class="card-source">恩捷公告+宁德定点</div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <span class="card-id">#81</span>
-            <span class="card-tier" title="数据源层级">★★☆</span>
-            <span class="badge badge-pending">⏳ 待验证</span>
-          </div>
-          <div class="card-title">低空经济/eVTOL</div>
-          <div class="card-signal">泰国17.5亿美元500架VE25-100</div>
-          <div class="card-basis">同80，订单细节冷门</div>
-          <div class="card-meta">
-            <span>预测日：2026-08-05</span>
-            <span>验证截止：2026-12-31</span>
-          </div>
-          <div class="card-event">
-            <strong>验证事件：</strong>泰国 500 架 VE25-100 订单落地进展公告
-          </div>
-          
-          
-          <div class="card-source">海外媒体报道，落地待验证</div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <span class="card-id">#82</span>
-            <span class="card-tier" title="数据源层级">★☆☆</span>
-            <span class="badge badge-pending">⏳ 待验证</span>
-          </div>
-          <div class="card-title">创新药</div>
-          <div class="card-signal">首个商保创新药品目录（19款降幅15-50%）</div>
-          <div class="card-basis">支付体系变革刚发生</div>
-          <div class="card-meta">
-            <span>预测日：2026-08-05</span>
-            <span>验证截止：2026-12-31</span>
-          </div>
-          <div class="card-event">
-            <strong>验证事件：</strong>商保创新药目录执行落地（报销案例/放量数据）
-          </div>
-          
-          
-          <div class="card-source">政策文件官方发布</div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <span class="card-id">#83</span>
-            <span class="card-tier" title="数据源层级">★☆☆</span>
-            <span class="badge badge-pending">⏳ 待验证</span>
-          </div>
-          <div class="card-title">创新药</div>
-          <div class="card-signal">GLP-1替尔泊肽纳入医保</div>
-          <div class="card-basis">减重赛道医保化，新叙事</div>
-          <div class="card-meta">
-            <span>预测日：2026-08-05</span>
-            <span>验证截止：2026-12-31</span>
-          </div>
-          <div class="card-event">
-            <strong>验证事件：</strong>替尔泊肽医保执行（处方量/放量）公开数据
-          </div>
-          
-          
-          <div class="card-source">医保目录官方发布</div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <span class="card-id">#84</span>
-            <span class="card-tier" title="数据源层级">★★★</span>
-            <span class="badge badge-pending">⏳ 待验证</span>
-          </div>
-          <div class="card-title">存储/半导体</div>
-          <div class="card-signal">刻蚀国产化率突破30%/薄膜20%</div>
-          <div class="card-basis">具体数字比国产替代叙事更硬</div>
-          <div class="card-meta">
-            <span>预测日：2026-08-05</span>
-            <span>验证截止：2026-12-31</span>
-          </div>
-          <div class="card-event">
-            <strong>验证事件：</strong>2026 年底刻蚀/薄膜国产化率行业数据（北方华创/中微/拓荆订单）
-          </div>
-          
-          
-          <div class="card-source">行业数据估算</div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <span class="card-id">#85</span>
-            <span class="card-tier" title="数据源层级">★★☆</span>
-            <span class="badge badge-pending">⏳ 待验证</span>
-          </div>
-          <div class="card-title">存储/半导体</div>
-          <div class="card-signal">伯恩斯坦三条主线（北方华创/中微/拓荆）</div>
-          <div class="card-basis">外资行框架可参考</div>
-          <div class="card-meta">
-            <span>预测日：2026-08-05</span>
-            <span>验证截止：2026-12-31</span>
-          </div>
-          <div class="card-event">
-            <strong>验证事件：</strong>北方华创/中微/拓荆 2026 业绩与订单（伯恩斯坦主线是否兑现）
-          </div>
-          
-          
-          <div class="card-source">外资行研报（伯恩斯坦）</div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <span class="card-id">#89</span>
-            <span class="card-tier" title="数据源层级">★★★</span>
-            <span class="badge badge-pending">⏳ 待验证</span>
-          </div>
-          <div class="card-title">创新药</div>
-          <div class="card-signal">CDMO试剂/耗材100亿/国产率<30%</div>
-          <div class="card-basis">缝隙机会被整机叙事遮蔽</div>
-          <div class="card-meta">
-            <span>预测日：2026-08-05</span>
-            <span>验证截止：2026-12-31</span>
-          </div>
-          <div class="card-event">
-            <strong>验证事件：</strong>2026 年底 CDMO 试剂/耗材市场规模与国产化率数据
-          </div>
-          
-          
-          <div class="card-source">行业规模估算</div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <span class="card-id">#47</span>
-            <span class="card-tier" title="数据源层级">★★☆</span>
-            <span class="badge badge-pending">⏳ 待验证</span>
-          </div>
-          <div class="card-title">存储/半导体</div>
-          <div class="card-signal">台积电CoWoS产能利用率100%+2026扩产</div>
-          <div class="card-basis">市场聚焦英伟达，忽略台积电才是AI芯片制造商</div>
-          <div class="card-meta">
-            <span>预测日：2026-08-05</span>
-            <span>验证截止：2027-01-31</span>
-          </div>
-          <div class="card-event">
-            <strong>验证事件：</strong>台积电 2026Q4 法说会：CoWoS 产能利用率与 2027 扩产计划
-          </div>
-          
-          
-          <div class="card-source">法说会公开指引</div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <span class="card-id">#67</span>
-            <span class="card-tier" title="数据源层级">★☆☆</span>
-            <span class="badge badge-pending">⏳ 待验证</span>
-          </div>
-          <div class="card-title">存储/半导体</div>
-          <div class="card-signal">台积电2026资本支出480-500亿美元</div>
-          <div class="card-basis">数字冷门，市场只跟踪财报</div>
-          <div class="card-meta">
-            <span>预测日：2026-08-05</span>
-            <span>验证截止：2027-01-31</span>
-          </div>
-          <div class="card-event">
-            <strong>验证事件：</strong>台积电 2026 实际资本支出 vs 480-500 亿美元预测
-          </div>
-          
-          
-          <div class="card-source">台积电法说会官方资本支出指引</div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <span class="card-id">#87</span>
-            <span class="card-tier" title="数据源层级">★★★</span>
-            <span class="badge badge-pending">⏳ 待验证</span>
-          </div>
-          <div class="card-title">固态电池</div>
-          <div class="card-signal">硫化锂2027需求1000吨→2030万吨级，价格300万→50万</div>
-          <div class="card-basis">上游材料价值量无人计算</div>
-          <div class="card-meta">
-            <span>预测日：2026-08-05</span>
-            <span>验证截止：2027-06-30</span>
-          </div>
-          <div class="card-event">
-            <strong>验证事件：</strong>2027H1 硫化锂需求/价格数据（1000 吨需求、价格曲线）
-          </div>
-          
-          
-          <div class="card-source">行业预测</div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <span class="card-id">#88</span>
-            <span class="card-tier" title="数据源层级">★★★</span>
-            <span class="badge badge-pending">⏳ 待验证</span>
-          </div>
-          <div class="card-title">固态电池</div>
-          <div class="card-signal">锂金属负极2027需求5000吨→2030 2万吨，国产率<20%</div>
-          <div class="card-basis">电解质之外被忽略</div>
-          <div class="card-meta">
-            <span>预测日：2026-08-05</span>
-            <span>验证截止：2027-06-30</span>
-          </div>
-          <div class="card-event">
-            <strong>验证事件：</strong>2027H1 锂金属负极需求与国产化率数据
-          </div>
-          
-          
-          <div class="card-source">行业预测</div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <span class="card-id">#68</span>
-            <span class="card-tier" title="数据源层级">★★★</span>
-            <span class="badge badge-pending">⏳ 待验证</span>
-          </div>
-          <div class="card-title">固态电池</div>
-          <div class="card-signal">固态电池2027示范装车→2030规模化</div>
-          <div class="card-basis">时间表散落，无统一框架</div>
-          <div class="card-meta">
-            <span>预测日：2026-08-05</span>
-            <span>验证截止：2027-06-30</span>
-          </div>
-          <div class="card-event">
-            <strong>验证事件：</strong>2027 年示范装车时间表是否兑现（装车数量/车型）
-          </div>
-          
-          
-          <div class="card-source">行业时间表整理</div>
-        </div>
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#54</span>
+    <span class="card-tier" title="数据源层级">★☆☆</span>
+    <span class="badge badge-hit">◑ 部分兑现</span>
   </div>
-  
+  <div class="card-title">固态电池</div>
+  <div class="card-signal">比亚迪硫化物全固态2026Q3重庆20GWh，成本70美元/kWh</div>
+  <div class="card-basis">成本平价数字无人验证</div>
+  <div class="card-meta">
+    <span>预测日：2026-08-05</span>
+    <span>验证截止：2026-09-30</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>比亚迪硫化物全固态 2026Q3 重庆 20GWh 产线落地进展公告</div>
+  <div class="card-result"><strong>验证结果：</strong>[判定日 2026-09-30] 核验1 重庆产线: 未落地、仅2026Q3启动建设/开工（sina财经头条2026-09-18「重庆璧山…20GWh…量产线启动建设」；腾讯2026-09-23「计划今年三季度开工」；SMM2026-07-27「预计2026年三季度开工」）; 核验2 20GWh: 有来源——重庆璧山基地首期20GWh硫化物全固态量产线，属官方三阶段规划（solarbe2026-02-24；东方财富2026-04-17）; 核验3 成本70美元/kWh: 未兑现、无达成证据，仅规划目标值（官方2030固液同价0.5-0.7元/Wh；当前全固态电芯1.6-2.2元/Wh）; 归因: A 时间线错位——把「开工/启动建设」表述为「产线落地」，官方装车口径为2027Q1小批量、2030大规模量产 + B 来源不可靠(次标签：70美元/kWh无一手出处); 证据链: sina财经头条2026-09-18 / 腾讯新闻2026-09-23 / SMM2026-07-27 / solarbe2026-02-24 / 东方财富2026-04-17 / 36kr2026-09-14</div>
+  <div class="card-source">比亚迪官方发布会/公告</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#91</span>
+    <span class="card-tier" title="数据源层级">★★★</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">存储/半导体</div>
+  <div class="card-signal">天孚通信2026三季报有源光器件收入环比回升</div>
+  <div class="card-basis">调查笔记053：10月底三季报见分晓，200G EML芯片缓解则有源光器件环比回升</div>
+  <div class="card-meta">
+    <span>预测日：2026-09-02</span>
+    <span>验证截止：2026-10-31</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>三季报披露，核对有源光器件收入环比Q2方向</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#92</span>
+    <span class="card-tier" title="数据源层级">★★★</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">存储/半导体</div>
+  <div class="card-signal">东山精密(索尔思)Q3光模块收入守住且毛利率守住39.33%</div>
+  <div class="card-basis">调查笔记061：Q3财报里光模块收入和39.33%毛利率能不能守住是194倍PE第一道考题</div>
+  <div class="card-meta">
+    <span>预测日：2026-09-02</span>
+    <span>验证截止：2026-10-31</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>三季报：光模块收入体量+毛利率 vs 39.33%</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#93</span>
+    <span class="card-tier" title="数据源层级">★★★</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">存储/半导体</div>
+  <div class="card-signal">长川科技120亿在手订单Q3兑现为收入利润</div>
+  <div class="card-basis">调查笔记062：120亿订单在手、Q1净利+218%，中报只出Q1数据，三季报看兑现</div>
+  <div class="card-meta">
+    <span>预测日：2026-09-02</span>
+    <span>验证截止：2026-10-31</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>三季报：收入/毛利 vs 在手120亿订单兑现</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#94</span>
+    <span class="card-tier" title="数据源层级">★★★</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">存储/半导体</div>
+  <div class="card-signal">北方华创Q3成本增速回到收入增速以下</div>
+  <div class="card-basis">调查笔记062：H1成本+30.8%vs收入+24.90%，利润率压缩是结构还是降价抢单，Q3见分晓</div>
+  <div class="card-meta">
+    <span>预测日：2026-09-02</span>
+    <span>验证截止：2026-10-31</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>三季报：成本增速 vs 收入增速</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#95</span>
+    <span class="card-tier" title="数据源层级">★★★</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">消费/白酒</div>
+  <div class="card-signal">茅台2026三季报净利润同比增速回到正区间</div>
+  <div class="card-basis">调查笔记059：Q2单季-26.6%，关键节点10月底三季报，回到正区间说明渠道切换低谷已过</div>
+  <div class="card-meta">
+    <span>预测日：2026-09-02</span>
+    <span>验证截止：2026-10-31</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>三季报：归母净利同比 vs Q2单季-26.6%</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#96</span>
+    <span class="card-tier" title="数据源层级">★★★</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">低空经济/eVTOL</div>
+  <div class="card-signal">亿航Q3交付量延续放量且全年6亿营收指引路径兑现</div>
+  <div class="card-basis">调查笔记050：Q1交付4架、Q2交付49架(+900%)，全年营收指引6亿，Q3交付是路径检验</div>
+  <div class="card-meta">
+    <span>预测日：2026-09-02</span>
+    <span>验证截止：2026-10-31</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>Q3交付/营收公告：交付量 vs Q2 49架、指引6亿进度</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#97</span>
+    <span class="card-tier" title="数据源层级">★☆☆</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">固态电池</div>
+  <div class="card-signal">宁德时代麒麟电池二代量产进度Q3达标（功率密度&gt;250Wh/kg）</div>
+  <div class="card-basis">宁德时代三季度报+官方发布会</div>
+  <div class="card-meta">
+    <span>预测日：2026-09-19</span>
+    <span>验证截止：2026-10-31</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>宁德时代2026年三季度报告发布（预计10月底）</div>
+  <div class="card-source">宁德时代官方季报+投资者关系活动记录</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#98</span>
+    <span class="card-tier" title="数据源层级">★☆☆</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">固态电池</div>
+  <div class="card-signal">比亚迪刀片电池二代能量密度突破300Wh/kg（官方公告）</div>
+  <div class="card-basis">比亚迪三季度业绩预告+技术发布会</div>
+  <div class="card-meta">
+    <span>预测日：2026-09-19</span>
+    <span>验证截止：2026-10-31</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>比亚迪2026年三季度报告发布</div>
+  <div class="card-source">比亚迪官方季报+深圳发布会</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#102</span>
+    <span class="card-tier" title="数据源层级">★☆☆</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">创新药</div>
+  <div class="card-signal">信达生物PD-1国内适应症数量突破5个（NMPA批准）</div>
+  <div class="card-basis">NMPA批准公告+公司年报</div>
+  <div class="card-meta">
+    <span>预测日：2026-09-19</span>
+    <span>验证截止：2026-10-31</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>信达生物2026年三季报+ NMPA批准公告</div>
+  <div class="card-source">NMPA官网+信达生物公告</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#99</span>
+    <span class="card-tier" title="数据源层级">★☆☆</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">低空经济/eVTOL</div>
+  <div class="card-signal">亿航EH216-S获得首单商业交付（非试飞订单）</div>
+  <div class="card-basis">亿航智能季度交付数据+民航局适航证进展</div>
+  <div class="card-meta">
+    <span>预测日：2026-09-19</span>
+    <span>验证截止：2026-11-30</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>亿航智能2026年Q3交付数据公告</div>
+  <div class="card-source">亿航智能美股财报+民航局公告</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#100</span>
+    <span class="card-tier" title="数据源层级">★★☆</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">存储/半导体</div>
+  <div class="card-signal">长江存储28nm以下NAND产能利用率突破85%（行业报告）</div>
+  <div class="card-basis">TrendForce/Yole存储行业报告</div>
+  <div class="card-meta">
+    <span>预测日：2026-09-19</span>
+    <span>验证截止：2026-11-30</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>2026年Q3存储行业季度报告发布</div>
+  <div class="card-source">TrendForce/Yole季度报告</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#101</span>
+    <span class="card-tier" title="数据源层级">★☆☆</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">存储/半导体</div>
+  <div class="card-signal">HBM4认证通过客户数≥3家（三星/海力士/美光）</div>
+  <div class="card-basis">HBM供应链认证公告+客户名单</div>
+  <div class="card-meta">
+    <span>预测日：2026-09-19</span>
+    <span>验证截止：2026-11-30</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>海力士/三星HBM4认证客户公告</div>
+  <div class="card-source">海力士/三星官方公告+半导体行业媒体</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#46</span>
+    <span class="card-tier" title="数据源层级">★☆☆</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">存储/半导体</div>
+  <div class="card-signal">长鑫2026Q1净利247.62亿/毛利65%/份额7.67%</div>
+  <div class="card-basis">数据在招股书深处，散户只知存储涨价</div>
+  <div class="card-meta">
+    <span>预测日：2026-08-05</span>
+    <span>验证截止：2026-12-31</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>长鑫正式披露招股书财务数据或上市后首份财报，核对净利/毛利/份额</div>
+  <div class="card-source">招股书=官方一手文件</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#51</span>
+    <span class="card-tier" title="数据源层级">★★★</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">存储/半导体</div>
+  <div class="card-signal">CoWoS=战略资源，封装估值重构</div>
+  <div class="card-basis">封装是末端旧框架未破</div>
+  <div class="card-meta">
+    <span>预测日：2026-08-05</span>
+    <span>验证截止：2026-12-31</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>2026H2 封装/先进封装板块估值重构是否发生（板块相对收益）</div>
+  <div class="card-source">市场分析</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#52</span>
+    <span class="card-tier" title="数据源层级">★★★</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">存储/半导体</div>
+  <div class="card-signal">HBM差2-3代是卡脖子，DRAM快≠HBM快</div>
+  <div class="card-basis">市场把DRAM国产化当全部</div>
+  <div class="card-meta">
+    <span>预测日：2026-08-05</span>
+    <span>验证截止：2026-12-31</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>2026H2 HBM 国产化进展（HBM2E/3 量产节点）公开信息</div>
+  <div class="card-source">行业分析</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#53</span>
+    <span class="card-tier" title="数据源层级">★★★</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">固态电池</div>
+  <div class="card-signal">固态电池供给优先级 eVTOL&gt;EV&gt;储能</div>
+  <div class="card-basis">市场共识电池过剩，实际是结构性紧缺</div>
+  <div class="card-meta">
+    <span>预测日：2026-08-05</span>
+    <span>验证截止：2026-12-31</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>2026H2 固态电池装车/订单供给分布（eVTOL vs EV vs 储能）</div>
+  <div class="card-source">行业分析</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#55</span>
+    <span class="card-tier" title="数据源层级">★★☆</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">创新药</div>
+  <div class="card-signal">康方AK112头对头击败K药</div>
+  <div class="card-basis">事实已出但散户认知滞后</div>
+  <div class="card-meta">
+    <span>预测日：2026-08-05</span>
+    <span>验证截止：2026-12-31</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>康方 AK112 头对头数据公开/监管进展</div>
+  <div class="card-source">头对头临床数据已公开</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#56</span>
+    <span class="card-tier" title="数据源层级">★★☆</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">创新药</div>
+  <div class="card-signal">HARMONi-7 II期2026年底读出=150亿交易关键节点</div>
+  <div class="card-basis">时间窗明确，市场犹豫未定价</div>
+  <div class="card-meta">
+    <span>预测日：2026-08-05</span>
+    <span>验证截止：2026-12-31</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>HARMONi-7 II 期 2026 年底读出（150 亿交易关键节点）</div>
+  <div class="card-source">临床试验公开时间节点</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#57</span>
+    <span class="card-tier" title="数据源层级">★★☆</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">创新药</div>
+  <div class="card-signal">2026H1中国占全球Top10 BD交易8席</div>
+  <div class="card-basis">只当个案，不知已成群体现象</div>
+  <div class="card-meta">
+    <span>预测日：2026-08-05</span>
+    <span>验证截止：2026-12-31</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>2026 全年中国 BD 交易占全球 Top10 席位复盘</div>
+  <div class="card-source">行业统计（BD交易盘点）</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#63</span>
+    <span class="card-tier" title="数据源层级">★★★</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">存储/半导体</div>
+  <div class="card-signal">长鑫HBM3已送样（非PPT）</div>
+  <div class="card-basis">送样细节无公开报道，市场仍按缺位定价</div>
+  <div class="card-meta">
+    <span>预测日：2026-08-05</span>
+    <span>验证截止：2026-12-31</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>长鑫 HBM3 送样获得客户/供应链公开佐证（报道/公告）</div>
+  <div class="card-source">送样细节无公开报道，供应链传闻</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#64</span>
+    <span class="card-tier" title="数据源层级">★★☆</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">低空经济/eVTOL</div>
+  <div class="card-signal">宁德战略投资峰飞航空</div>
+  <div class="card-basis">巨头入局信号未被解读</div>
+  <div class="card-meta">
+    <span>预测日：2026-08-05</span>
+    <span>验证截止：2026-12-31</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>宁德-峰飞战略合作实质进展（投资交割/合作公告）</div>
+  <div class="card-source">媒体广泛报道，交割待确认</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#65</span>
+    <span class="card-tier" title="数据源层级">★★★</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">低空经济/eVTOL</div>
+  <div class="card-signal">eVTOL电池成本=车规3-5倍，适航是壁垒</div>
+  <div class="card-basis">成本数字分散，无人算过电池价值量</div>
+  <div class="card-meta">
+    <span>预测日：2026-08-05</span>
+    <span>验证截止：2026-12-31</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>eVTOL 电池成本公开数据（是否车规 3-5 倍、适航壁垒是否确认）</div>
+  <div class="card-source">成本测算</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#69</span>
+    <span class="card-tier" title="数据源层级">★★☆</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">创新药</div>
+  <div class="card-signal">康方HARMONi-2 III期2024年9月已阳</div>
+  <div class="card-basis">纠正性信息差：市场/媒体仍写II期2026年底</div>
+  <div class="card-meta">
+    <span>预测日：2026-08-05</span>
+    <span>验证截止：2026-12-31</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>康方 HARMONi-2 III 期数据正式读出/发表（市场认知纠正）</div>
+  <div class="card-source">临床试验公开数据，待正式读出</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#71</span>
+    <span class="card-tier" title="数据源层级">★★★</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">存储/半导体</div>
+  <div class="card-signal">光刻胶三短板 KrF 5%/ArF&lt;2%/EUV 0%</div>
+  <div class="card-basis">国产替代叙事聚焦设备，材料被忽略</div>
+  <div class="card-meta">
+    <span>预测日：2026-08-05</span>
+    <span>验证截止：2026-12-31</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>2026 年底光刻胶国产化率数据（KrF/ArF/EUV 各档位）</div>
+  <div class="card-source">行业数据估算</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#72</span>
+    <span class="card-tier" title="数据源层级">★☆☆</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">固态电池</div>
+  <div class="card-signal">国轩固态电解质2000吨/年+硫化锂300吨</div>
+  <div class="card-basis">产能数字只有公告，无拼装</div>
+  <div class="card-meta">
+    <span>预测日：2026-08-05</span>
+    <span>验证截止：2026-12-31</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>国轩固态电解质 2000 吨/年产线投产公告/产能爬坡</div>
+  <div class="card-source">国轩官方公告产能数字</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#75</span>
+    <span class="card-tier" title="数据源层级">★★★</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">创新药</div>
+  <div class="card-signal">恒瑞13管线打包BMS + Co-Co框架</div>
+  <div class="card-basis">新模式未被理解，市场仍按自主出海叙事</div>
+  <div class="card-meta">
+    <span>预测日：2026-08-05</span>
+    <span>验证截止：2026-12-31</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>恒瑞-BMS 13 管线打包交易正式官宣/交割</div>
+  <div class="card-source">市场消息，交易未官宣</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#76</span>
+    <span class="card-tier" title="数据源层级">★★☆</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">低空经济/eVTOL</div>
+  <div class="card-signal">亿航2024.11全球首次eVTOL固态电池飞行</div>
+  <div class="card-basis">里程碑事件被淹没</div>
+  <div class="card-meta">
+    <span>预测日：2026-08-05</span>
+    <span>验证截止：2026-12-31</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>亿航固态电池飞行里程碑被行业引用/后续装车进展</div>
+  <div class="card-source">公司里程碑事件+媒体报道</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#77</span>
+    <span class="card-tier" title="数据源层级">★☆☆</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">低空经济/eVTOL</div>
+  <div class="card-signal">国轩已签无人机固态电芯订单（EC01）</div>
+  <div class="card-basis">订单落地证明从规划到订单</div>
+  <div class="card-meta">
+    <span>预测日：2026-08-05</span>
+    <span>验证截止：2026-12-31</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>国轩无人机固态电芯订单 EC01 交付/放量公告</div>
+  <div class="card-source">国轩订单公告</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#78</span>
+    <span class="card-tier" title="数据源层级">★☆☆</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">固态电池</div>
+  <div class="card-signal">恩捷固态隔膜2026中试线+宁德定点</div>
+  <div class="card-basis">隔膜龙头转型固态，无人跟踪</div>
+  <div class="card-meta">
+    <span>预测日：2026-08-05</span>
+    <span>验证截止：2026-12-31</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>恩捷固态隔膜 2026 中试线投产公告 + 宁德定点进展</div>
+  <div class="card-source">恩捷公告+宁德定点</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#79</span>
+    <span class="card-tier" title="数据源层级">★★★</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">固态电池</div>
+  <div class="card-signal">固态电池成本降35%+的成本曲线</div>
+  <div class="card-basis">成本曲线只存在于研报，散户无框架</div>
+  <div class="card-meta">
+    <span>预测日：2026-08-05</span>
+    <span>验证截止：2026-12-31</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>2026 年底固态电池成本公开数据（是否降 35%+）</div>
+  <div class="card-source">研报成本曲线</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#80</span>
+    <span class="card-tier" title="数据源层级">★★☆</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">低空经济/eVTOL</div>
+  <div class="card-signal">阿联酋10亿美元采购350架E20（单价286万美元）</div>
+  <div class="card-basis">海外订单细节冷门，eVTOL还在取证共识未破</div>
+  <div class="card-meta">
+    <span>预测日：2026-08-05</span>
+    <span>验证截止：2026-12-31</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>阿联酋 350 架 E20 采购订单正式落地（签约/交付）公告</div>
+  <div class="card-source">海外媒体报道，正式落地待验证</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#81</span>
+    <span class="card-tier" title="数据源层级">★★☆</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">低空经济/eVTOL</div>
+  <div class="card-signal">泰国17.5亿美元500架VE25-100</div>
+  <div class="card-basis">同80，订单细节冷门</div>
+  <div class="card-meta">
+    <span>预测日：2026-08-05</span>
+    <span>验证截止：2026-12-31</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>泰国 500 架 VE25-100 订单落地进展公告</div>
+  <div class="card-source">海外媒体报道，落地待验证</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#82</span>
+    <span class="card-tier" title="数据源层级">★☆☆</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">创新药</div>
+  <div class="card-signal">首个商保创新药品目录（19款降幅15-50%）</div>
+  <div class="card-basis">支付体系变革刚发生</div>
+  <div class="card-meta">
+    <span>预测日：2026-08-05</span>
+    <span>验证截止：2026-12-31</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>商保创新药目录执行落地（报销案例/放量数据）</div>
+  <div class="card-source">政策文件官方发布</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#83</span>
+    <span class="card-tier" title="数据源层级">★☆☆</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">创新药</div>
+  <div class="card-signal">GLP-1替尔泊肽纳入医保</div>
+  <div class="card-basis">减重赛道医保化，新叙事</div>
+  <div class="card-meta">
+    <span>预测日：2026-08-05</span>
+    <span>验证截止：2026-12-31</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>替尔泊肽医保执行（处方量/放量）公开数据</div>
+  <div class="card-source">医保目录官方发布</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#84</span>
+    <span class="card-tier" title="数据源层级">★★★</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">存储/半导体</div>
+  <div class="card-signal">刻蚀国产化率突破30%/薄膜20%</div>
+  <div class="card-basis">具体数字比国产替代叙事更硬</div>
+  <div class="card-meta">
+    <span>预测日：2026-08-05</span>
+    <span>验证截止：2026-12-31</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>2026 年底刻蚀/薄膜国产化率行业数据（北方华创/中微/拓荆订单）</div>
+  <div class="card-source">行业数据估算</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#85</span>
+    <span class="card-tier" title="数据源层级">★★☆</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">存储/半导体</div>
+  <div class="card-signal">伯恩斯坦三条主线（北方华创/中微/拓荆）</div>
+  <div class="card-basis">外资行框架可参考</div>
+  <div class="card-meta">
+    <span>预测日：2026-08-05</span>
+    <span>验证截止：2026-12-31</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>北方华创/中微/拓荆 2026 业绩与订单（伯恩斯坦主线是否兑现）</div>
+  <div class="card-source">外资行研报（伯恩斯坦）</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#86</span>
+    <span class="card-tier" title="数据源层级">★★★</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">存储/半导体</div>
+  <div class="card-signal">半导体零部件/耗材国产率&lt;10%</div>
+  <div class="card-basis">认证周期18-36月，缝隙机会无人拼装</div>
+  <div class="card-meta">
+    <span>预测日：2026-08-05</span>
+    <span>验证截止：2026-12-31</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>2026 年底半导体零部件/耗材国产化率行业数据</div>
+  <div class="card-source">行业数据估算</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#89</span>
+    <span class="card-tier" title="数据源层级">★★★</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">创新药</div>
+  <div class="card-signal">CDMO试剂/耗材100亿/国产率&lt;30%</div>
+  <div class="card-basis">缝隙机会被整机叙事遮蔽</div>
+  <div class="card-meta">
+    <span>预测日：2026-08-05</span>
+    <span>验证截止：2026-12-31</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>2026 年底 CDMO 试剂/耗材市场规模与国产化率数据</div>
+  <div class="card-source">行业规模估算</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#90</span>
+    <span class="card-tier" title="数据源层级">★★★</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">低空经济/eVTOL</div>
+  <div class="card-signal">eVTOL航电系统50亿市场/国产率&lt;30%</div>
+  <div class="card-basis">整机叙事遮蔽航电缝隙</div>
+  <div class="card-meta">
+    <span>预测日：2026-08-05</span>
+    <span>验证截止：2026-12-31</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>2026 年底 eVTOL 航电系统市场/国产化率数据</div>
+  <div class="card-source">行业估算</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#47</span>
+    <span class="card-tier" title="数据源层级">★★☆</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">存储/半导体</div>
+  <div class="card-signal">台积电CoWoS产能利用率100%+2026扩产</div>
+  <div class="card-basis">市场聚焦英伟达，忽略台积电才是AI芯片制造商</div>
+  <div class="card-meta">
+    <span>预测日：2026-08-05</span>
+    <span>验证截止：2027-01-31</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>台积电 2026Q4 法说会：CoWoS 产能利用率与 2027 扩产计划</div>
+  <div class="card-source">法说会公开指引</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#67</span>
+    <span class="card-tier" title="数据源层级">★☆☆</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">存储/半导体</div>
+  <div class="card-signal">台积电2026资本支出480-500亿美元</div>
+  <div class="card-basis">数字冷门，市场只跟踪财报</div>
+  <div class="card-meta">
+    <span>预测日：2026-08-05</span>
+    <span>验证截止：2027-01-31</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>台积电 2026 实际资本支出 vs 480-500 亿美元预测</div>
+  <div class="card-source">台积电法说会官方资本支出指引</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#68</span>
+    <span class="card-tier" title="数据源层级">★★★</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">固态电池</div>
+  <div class="card-signal">固态电池2027示范装车→2030规模化</div>
+  <div class="card-basis">时间表散落，无统一框架</div>
+  <div class="card-meta">
+    <span>预测日：2026-08-05</span>
+    <span>验证截止：2027-06-30</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>2027 年示范装车时间表是否兑现（装车数量/车型）</div>
+  <div class="card-source">行业时间表整理</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#87</span>
+    <span class="card-tier" title="数据源层级">★★★</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">固态电池</div>
+  <div class="card-signal">硫化锂2027需求1000吨→2030万吨级，价格300万→50万</div>
+  <div class="card-basis">上游材料价值量无人计算</div>
+  <div class="card-meta">
+    <span>预测日：2026-08-05</span>
+    <span>验证截止：2027-06-30</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>2027H1 硫化锂需求/价格数据（1000 吨需求、价格曲线）</div>
+  <div class="card-source">行业预测</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-id">#88</span>
+    <span class="card-tier" title="数据源层级">★★★</span>
+    <span class="badge badge-pending">⏳ 待验证</span>
+  </div>
+  <div class="card-title">固态电池</div>
+  <div class="card-signal">锂金属负极2027需求5000吨→2030 2万吨，国产率&lt;20%</div>
+  <div class="card-basis">电解质之外被忽略</div>
+  <div class="card-meta">
+    <span>预测日：2026-08-05</span>
+    <span>验证截止：2027-06-30</span>
+  </div>
+  <div class="card-event"><strong>验证事件：</strong>2027H1 锂金属负极需求与国产化率数据</div>
+  <div class="card-source">行业预测</div>
+</div>
+  </div>
+
   <footer>
     <h3>判定规则说明</h3>
     <ul>
-      <li><strong>待验证</strong>：result 字段为空或"待验证"</li>
-      <li><strong>命中</strong>：result 字段包含"命中/兑现/确认/验证通过/正确/达到/符合"等正向关键词</li>
-      <li><strong>未命中</strong>：result 非空且不符合命中条件</li>
-      <li>数据来源层级：★ 越多代表越权威（Tier 1=招股书/财报一手文件）</li>
+      <li><strong>命中/部分兑现</strong>：到期核验后 result 回填为「已兑现/部分兑现」，附证据链（域名+日期）</li>
+      <li><strong>落空</strong>：核验后 result 回填为「落空」，附 miss 归因标签（A 时间线错位 / B 来源不可靠 / C 定义漂移 / D 环境变化 / E 纯误判）——落空与命中同样公开</li>
+      <li><strong>命中率</strong> =（已兑现+部分兑现）/ 已验证；待验证与推迟不计入分母</li>
+      <li>数据来源层级：★ 越多代表越权威（Tier 1=招股书/财报/公告等一手文件）</li>
     </ul>
   </footer>
 </div>
