@@ -31,7 +31,7 @@ th { background: #faf6f0; }
 <tr><th>项</th><th>值</th></tr>
 <tr><td>端点</td><td><code>https://cn-intel-mcp.lory69060.workers.dev/mcp</code></td></tr>
 <tr><td>协议</td><td>MCP Streamable HTTP（JSON-RPC）</td></tr>
-<tr><td>鉴权</td><td>Bearer Token（访问令牌申请见文末联系）</td></tr>
+<tr><td>鉴权</td><td>匿名可读：<code>/mcp</code> 无需 token（只读工具，tools/call 日限 100 次）。可选 Bearer Token 提升额度（free 100/日、pro 10000/日，申请见文末联系）；无效或过期 token 返回 401。</td></tr>
 <tr><td>数据源</td><td>公开财报 / 公司公告 / 行业报告（全部可溯源）</td></tr>
 </table>
 
