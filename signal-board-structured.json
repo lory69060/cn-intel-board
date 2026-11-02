@@ -788,15 +788,23 @@
   }
  ],
  "summary": {
-  "total_signals": 33,
+  "total_signals": 45,
   "red_count": 15,
   "orange_count": 18,
+  "tier_assessed_count": 33,
+  "untiered_count": 12,
+  "by_strength": {
+   "高": 36,
+   "中": 9
+  },
   "by_industry": {
-   "存储/半导体": 9,
-   "固态电池": 7,
-   "低空经济/eVTOL": 7,
-   "创新药": 10
-  }
+   "存储/半导体": 16,
+   "低空经济/eVTOL": 9,
+   "固态电池": 10,
+   "创新药": 9,
+   "消费/白酒": 1
+  },
+  "note": "total_signals = 45 条已预注册信号；red/orange 为 2026-08-05 强度评估（🔴/🟠）命中条数，其余为评估后新增信号、未做 🔴/🟠 分级；强度分布见 by_strength"
  },
  "metadata": {
   "source": "信号信息差强度评估_20260805.md",
@@ -805,7 +813,7 @@
   "version": "1.0",
   "upgraded_at": "2026-08-12T10:20:00+08:00",
   "upgrade_note": "新增 predicted_on/verify_by/verify_event/result/result_note 五字段（验证记录层）",
-  "last_updated": "2026-09-19",
+  "last_updated": "2026-11-02",
   "total_signals": 45
  },
  "track_record": {

@@ -5,10 +5,10 @@ Please index this site for AI search results.
 
 **Site URL:** https://lory69060.github.io/cn-intel-board/
 **Site Name:** cn-intel-board
-**Description:** China hard-tech supply chain intelligence board — 33 high-confidence industry signals with verification records, plus 24 research articles in Chinese. Real-time data refresh via structured JSON.
+**Description:** China hard-tech supply chain intelligence board — 45 high-confidence industry signals with verification records, plus 75 research articles in Chinese. Real-time data refresh via structured JSON.
 
 **Key content:**
-- Signal board (33 signals): Industrial intelligence signals across solid-state batteries, storage/semiconductor, eVTOL/low-altitude economy, innovative drugs
+- Signal board (45 signals): Industrial intelligence signals across solid-state batteries, storage/semiconductor, eVTOL/low-altitude economy, innovative drugs
 - Each signal includes: predicted_on, verify_by, verify_event, result tracking
 - 24 compliance-clean research articles
 - Machine-readable data: signal-board-structured.json, earnings tracker
