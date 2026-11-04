@@ -58,7 +58,7 @@
 <div class="container">
   <header>
     <h1>信号验证记录</h1>
-    <div class="update-time">最后更新：2026-10-31 11:52（本页由 signal-board-structured.json 自动生成）</div>
+    <div class="update-time">最后更新：2026-11-05 07:39（本页由 signal-board-structured.json 自动生成）</div>
     <div class="disclaimer">
       仅供研究参考，不构成投资建议。每条信号在 predicted_on 预注册、verify_by 到期公开核验回填，结果可证伪、可复核。
     </div>
@@ -66,7 +66,8 @@
 
   <div class="dashboard">
     <div class="stat-card"><div class="stat-num">45</div><div class="stat-label">信号总数</div></div>
-    <div class="stat-card hit"><div class="stat-num">5</div><div class="stat-label">命中/兑现</div></div>
+    <div class="stat-card hit"><div class="stat-num">5</div><div class="stat-label">部分兑现</div></div>
+    <div class="stat-card hit"><div class="stat-num">0</div><div class="stat-label">完全兑现</div></div>
     <div class="stat-card miss"><div class="stat-num">5</div><div class="stat-label">落空</div></div>
     <div class="stat-card pending"><div class="stat-num">35</div><div class="stat-label">待验证/推迟</div></div>
     <div class="stat-card"><div class="stat-num">50%</div><div class="stat-label">命中率</div></div>
@@ -848,7 +849,8 @@
     <ul>
       <li><strong>命中/部分兑现</strong>：到期核验后 result 回填为「已兑现/部分兑现」，附证据链（域名+日期）</li>
       <li><strong>落空</strong>：核验后 result 回填为「落空」，附 miss 归因标签（A 时间线错位 / B 来源不可靠 / C 定义漂移 / D 环境变化 / E 纯误判）——落空与命中同样公开</li>
-      <li><strong>命中率</strong> =（已兑现+部分兑现）/ 已验证；待验证与推迟不计入分母</li>
+      <li><strong>命中率</strong> =（完全兑现+部分兑现）/ 已验证；待验证与推迟不计入分母</li>
+      <li><strong>口径说明</strong>：「部分兑现」= 关键条件有部分未达（产线/成本/价格等未兑现）；「完全兑现」= 全部条件达成；「落空」= 核心事件未发生。当前三类分开展示，不做合并表述。</li>
       <li>数据来源层级：★ 越多代表越权威（Tier 1=招股书/财报/公告等一手文件）</li>
     </ul>
   </footer>
